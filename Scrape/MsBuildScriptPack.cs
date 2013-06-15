@@ -7,7 +7,18 @@ namespace Scrape
 	{
 		public void Build(string project)
 		{
-			Console.WriteLine("Building the project {0}", project);
+			var process = new System.Diagnostics.Process();
+			process.StartInfo = new System.Diagnostics.ProcessStartInfo()
+			{
+				FileName = "MSBuild.exe",
+				Arguments = project,
+				UseShellExecute = false,
+				RedirectStandardOutput = true
+			};
+			process.OutputDataReceived += (sender, eventArgs) => Console.WriteLine(eventArgs.Data);
+			process.Start();
+			process.BeginOutputReadLine();
+			process.WaitForExit();
 		}
 	}
 
