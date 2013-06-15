@@ -1,3 +1,4 @@
-del bin\*.* /Q
-copy ..\Scrape\bin\Debug\*.* bin
+rmdir /S /Q .\bin
+mkdir .\bin
+copy ..\building\bin\*.* bin
 scriptcs test-scrape.csx

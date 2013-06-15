@@ -9,4 +9,7 @@ call build-bootstrap.bat
 echo *** Building Scrape with itself. How cool is that? ***
 scriptcs build.csx
 
-:end
+echo *** Copying latest binaries ***
+rmdir /S /Q .\bin
+mkdir .\bin
+copy ..\Scrape\bin\Debug\*.* bin
