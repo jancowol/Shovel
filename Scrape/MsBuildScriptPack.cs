@@ -5,7 +5,7 @@ namespace Scrape
 {
 	public class MsBuild : IScriptPackContext
 	{
-		public void Build(string project)
+		public void Project(string project)
 		{
 			var process = new System.Diagnostics.Process();
 			process.StartInfo = new System.Diagnostics.ProcessStartInfo()

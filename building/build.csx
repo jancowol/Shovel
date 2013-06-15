@@ -1,4 +1,4 @@
-var builder = Require<MsBuild>();
+var msbuild = Require<MsBuild>();
 
-builder
-	.Build(@"..\Scrape\Scrape.sln");
+msbuild
+	.Project(@"..\Scrape\Scrape.sln");
