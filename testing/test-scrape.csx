@@ -1,5 +1,6 @@
-var builder = Require<MsBuild>();
+var msbuilder = Require<MsBuild>();
 
-builder
+msbuilder
 	.Project(@"..\Scrape\Scrape.sln")
+	.Verbosity
 	.Build();

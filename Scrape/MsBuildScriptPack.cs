@@ -6,6 +6,7 @@ namespace Scrape
 	public class MsBuilder
 	{
 		private readonly string _project;
+		private string _verbosity = "normal";
 
 		public MsBuilder(string project)
 		{
@@ -18,7 +19,7 @@ namespace Scrape
 			process.StartInfo = new System.Diagnostics.ProcessStartInfo()
 				{
 					FileName = "MSBuild.exe",
-					Arguments = _project,
+					Arguments = _project + " /verbosity:" + _verbosity,
 					UseShellExecute = false,
 					RedirectStandardOutput = true
 				};
@@ -26,6 +27,15 @@ namespace Scrape
 			process.Start();
 			process.BeginOutputReadLine();
 			process.WaitForExit();
+		}
+
+		public MsBuilder Verbosity
+		{
+			get
+			{
+				_verbosity = "minimal";
+				return this;
+			}
 		}
 	}
 
@@ -37,19 +47,19 @@ namespace Scrape
 		}
 	}
 
-    public class MsBuildScriptPack : IScriptPack
-    {
-	    public IScriptPackContext GetContext()
-	    {
+	public class MsBuildScriptPack : IScriptPack
+	{
+		public IScriptPackContext GetContext()
+		{
 			return new MsBuild();
-	    }
+		}
 
-	    public void Initialize(IScriptPackSession session)
-	    {
-	    }
+		public void Initialize(IScriptPackSession session)
+		{
+		}
 
-	    public void Terminate()
-	    {
-	    }
-    }
+		public void Terminate()
+		{
+		}
+	}
 }
