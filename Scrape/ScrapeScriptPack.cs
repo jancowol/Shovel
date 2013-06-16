@@ -70,17 +70,12 @@ namespace ScrapePack
 
 		public static Task Action(this string taskName, Action action)
 		{
-			var task = new Task(action);
-			Tasks.Add(taskName, task);
-			return task;
+			return NewTask(taskName, t => t.Action(action));
 		}
 
 		public static Task DependsOn(this string taskName, string precedingTask)
 		{
-			var task = new Task();
-			task.DependsOn(precedingTask);
-			Tasks.Add(taskName, task);
-			return task;
+			return NewTask(taskName, t => t.DependsOn(precedingTask));
 		}
 
 		public static void Do(this string taskName)
@@ -91,26 +86,21 @@ namespace ScrapePack
 				precedingTask.Do();
 			task.Do();
 		}
+
+		private static Task NewTask(string taskName, Action<Task> initializer)
+		{
+			var task = new Task();
+			initializer(task);
+			Tasks.Add(taskName, task);
+			return task;
+		}
 	}
 
 	public class Task
 	{
 		private Action _action;
-		private string _precedingTask;
 
-		public Task(Action action)
-		{
-			_action = action;
-		}
-
-		public Task()
-		{
-		}
-
-		public string PrecedingTask
-		{
-			get { return _precedingTask; }
-		}
+		public string PrecedingTask { get; private set; }
 
 		public Task Action(Action action)
 		{
@@ -120,7 +110,7 @@ namespace ScrapePack
 
 		public Task DependsOn(string precedingTask)
 		{
-			_precedingTask = precedingTask;
+			PrecedingTask = precedingTask;
 			return this;
 		}
 
