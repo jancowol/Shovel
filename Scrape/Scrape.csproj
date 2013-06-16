@@ -7,7 +7,7 @@
     <ProjectGuid>{9BD7A086-6456-4AD7-AB53-E356054A07A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Scrape</RootNamespace>
+    <RootNamespace>ScrapePack</RootNamespace>
     <AssemblyName>Scrape</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MsBuildScriptPack.cs" />
+    <Compile Include="ScrapeScriptPack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
