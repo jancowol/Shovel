@@ -1,6 +1,5 @@
 Require<Scrape>();
 
-// Can create new task
 "Simple"
 	.DependsOn("Clean", "PrepareRocketLaunchers")
 	.Action(() =>
@@ -29,21 +28,6 @@ Require<Scrape>();
 
 "Simple".Do();
 
-// "Clean".Task()
-// 	.DependsOn("AnotherTask")
-// 	.Do(() =>
-// 	{
-// 		// do some cleaning stuff here
-// 	});
-
-// Task("Clean")
-// 	.Do(() =>
-// 	{
-// 		// Clean bin folders
-// 		// Run another defined task
-// 		DoTask["AnotherTask"];
-// 	});
-
 // Task("Compile")
 // 	.DependsOn("Clean")
 // 	.Do(() =>
@@ -53,20 +37,3 @@ Require<Scrape>();
 // 			.Verbosity
 // 			.Build();
 // 	})
-
-// Task("Build")
-// 	.DependsOn("Clean", "Compile");
-
-// Task("Test")
-// 	.DependsOn("Build")
-// 	.Do(() =>
-// 	{
-// 		// Invoke the test runner here
-// 	});
-
-// Task("Deploy")
-// 	.DependsOn("Build")
-// 	.Do(() =>
-// 	{
-// 		// Copy some files to who knows where
-// 	});
