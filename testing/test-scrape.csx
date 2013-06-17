@@ -1,5 +1,7 @@
 Require<Scrape>();
 
+// Demonstrate task dependencies
+
 "Simple"
 	.DependsOn("Clean", "PrepareRocketLaunchers")
 	.Action(() =>
@@ -27,13 +29,3 @@ Require<Scrape>();
 	});
 
 "Simple".Do();
-
-// Task("Compile")
-// 	.DependsOn("Clean")
-// 	.Do(() =>
-// 	{
-// 		MsBuild
-// 			.Project(@"..\Scrape\Scrape.sln")
-// 			.Verbosity
-// 			.Build();
-// 	})
