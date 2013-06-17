@@ -2,19 +2,31 @@ Require<Scrape>();
 
 // Can create new task
 "Simple"
-	.DependsOn("Clean")
+	.DependsOn("Clean", "PrepareRocketLaunchers")
 	.Action(() =>
 	{
 		Console.WriteLine("Simplifying...");
 	});
 
 "Clean"
+	.DependsOn("WipeTheFloor")
 	.Action(() =>
 	{
 		Console.WriteLine("Cleaning...");
 	});
 
-// Can run the task
+"WipeTheFloor"
+	.Action(() =>
+	{
+		Console.WriteLine("Wiping the floor...");
+	});
+
+"PrepareRocketLaunchers"
+	.Action(() =>
+	{
+		Console.WriteLine("Loading rocket launchers...");
+	});
+
 "Simple".Do();
 
 // "Clean".Task()
