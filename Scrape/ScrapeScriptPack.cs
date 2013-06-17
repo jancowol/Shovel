@@ -15,6 +15,7 @@ namespace ScrapePack
 
 		public void Initialize(IScriptPackSession session)
 		{
+			session.ImportNamespace("ScrapePack");
 			ScrapeExtensions.Clear();
 		}
 

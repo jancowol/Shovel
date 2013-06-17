@@ -62,26 +62,47 @@ namespace Scrape.Tests
 		}
 
 		[Test]
-		public void ExecutingTaskRunsPrecedingTaskFirst()
+		public void ExecutingTaskRunsDependenciesFirst()
 		{
 			var taskExecutionOrder = new List<string>();
 
 			"TheTask"
-				.DependsOn("PrecedingTask1", "PrecedingTask2", "PrecedingTask3")
+				.DependsOn("Dependency1", "Dependency2", "Dependency3")
 				.Action(() => taskExecutionOrder.Add("TheTask"));
 
-			"PrecedingTask1"
-				.Action(() => taskExecutionOrder.Add("PrecedingTask1"));
+			"Dependency1"
+				.Action(() => taskExecutionOrder.Add("Dependency1"));
 
-			"PrecedingTask2"
-				.Action(() => taskExecutionOrder.Add("PrecedingTask2"));
+			"Dependency2"
+				.Action(() => taskExecutionOrder.Add("Dependency2"));
 
-			"PrecedingTask3"
-				.Action(() => taskExecutionOrder.Add("PrecedingTask3"));
+			"Dependency3"
+				.Action(() => taskExecutionOrder.Add("Dependency3"));
 
 			"TheTask".Do();
 
-			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"PrecedingTask1", "PrecedingTask2", "PrecedingTask3", "TheTask"}));
+			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"Dependency1", "Dependency2", "Dependency3", "TheTask"}));
+		}
+
+		[Test]
+		public void ExecutingTaskRunsDependencyHierarchy()
+		{
+			var taskExecutionOrder = new List<string>();
+
+			"TheTask"
+				.DependsOn("ParentA")
+				.Action(() => taskExecutionOrder.Add("TheTask"));
+
+			"ParentA"
+				.DependsOn("ParentB")
+				.Action(() => taskExecutionOrder.Add("ParentA"));
+
+			"ParentB"
+				.Action(() => taskExecutionOrder.Add("ParentB"));
+
+			"TheTask".Do();
+
+			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"ParentB", "ParentA", "TheTask"}));
 		}
 
 		private static void AssertBuildValidTask(Func<string, Task> builder)

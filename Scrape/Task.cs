@@ -11,10 +11,10 @@ namespace ScrapePack
 		{
 			_taskPreExecutor = taskPreExecutor;
 			Name = taskName;
-			PrecedingTasks = new string[]{};
+			Dependencies = new string[]{};
 		}
 
-		public string[] PrecedingTasks { get; private set; }
+		public string[] Dependencies { get; private set; }
 
 		public string Name { get; private set; }
 
@@ -24,9 +24,9 @@ namespace ScrapePack
 			return this;
 		}
 
-		public Task DependsOn(string[] precedingTasks)
+		public Task DependsOn(string[] dependencies)
 		{
-			PrecedingTasks = precedingTasks;
+			Dependencies = dependencies;
 			return this;
 		}
 

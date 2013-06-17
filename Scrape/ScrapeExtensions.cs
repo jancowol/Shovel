@@ -17,9 +17,9 @@ namespace ScrapePack
 			return NewTask(taskName, t => t.Action(action));
 		}
 
-		public static Task DependsOn(this string taskName, params string[] precedingTasks)
+		public static Task DependsOn(this string taskName, params string[] dependencies)
 		{
-			return NewTask(taskName, t => t.DependsOn(precedingTasks));
+			return NewTask(taskName, t => t.DependsOn(dependencies));
 		}
 
 		public static void Do(this string taskName)
@@ -28,10 +28,10 @@ namespace ScrapePack
 			task.Do();
 		}
 
-		private static void DoPrecedingTaskFor(Task task)
+		private static void RunDependencies(Task task)
 		{
-			foreach (var precedingTask in task.PrecedingTasks)
-				precedingTask.Do();
+			foreach (var dependency in task.Dependencies)
+				dependency.Do();
 		}
 
 		private static Task FindTask(string taskName)
@@ -47,7 +47,7 @@ namespace ScrapePack
 
 		private static Task NewTask(string taskName, Action<Task> initializer)
 		{
-			var task = new Task(taskName, DoPrecedingTaskFor);
+			var task = new Task(taskName, RunDependencies);
 			initializer(task);
 			_tasks.Add(taskName.ToLower(), task);
 			return task;
