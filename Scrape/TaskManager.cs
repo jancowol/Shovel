@@ -5,13 +5,13 @@ namespace ScrapePack
 {
 	public class TaskManager
 	{
-		private Dictionary<string, Task> _tasks = new Dictionary<string, Task>();
+		private readonly Dictionary<string, Task> _tasks = new Dictionary<string, Task>();
 
 		public Task FindTask(string taskName)
 		{
 			var taskKey = taskName.ToLower();
-
 			Task task;
+
 			if (_tasks.TryGetValue(taskKey, out task))
 				return task;
 
