@@ -10,17 +10,12 @@ namespace ScrapePack
 		public Task FindTask(string taskName)
 		{
 			var taskKey = taskName.ToLower();
-			Task task;
 
+			Task task;
 			if (_tasks.TryGetValue(taskKey, out task))
 				return task;
 
 			throw new UndefinedTaskException(String.Format("Could not find the task named '{0}'.", taskName));
-		}
-
-		internal void Clear()
-		{
-			_tasks = new Dictionary<string, Task>();
 		}
 
 		public void AddTask(string taskName, Task task)
