@@ -22,7 +22,7 @@ namespace Scrape.Tests
 		public void CanDefineNewTaskFromAction()
 		{
 			AssertBuildValidTask(taskName =>
-				taskName.Action(() => { }));
+				taskName.Do(() => { }));
 		}
 
 		[Test]
@@ -36,8 +36,8 @@ namespace Scrape.Tests
 		public void CanExecuteTaskByName()
 		{
 			var wasExecuted = false;
-			"TheTaskName".Action(() => wasExecuted = true);
-			"TheTaskName".Do();
+			"TheTaskName".Do(() => wasExecuted = true);
+			"TheTaskName".Run();
 
 			Assert.That(wasExecuted, Is.True);
 		}
@@ -46,8 +46,8 @@ namespace Scrape.Tests
 		public void TaskNamesAreCaseInsensitive()
 		{
 			var wasExecuted = false;
-			"TheTaskName".Action(() => wasExecuted = true);
-			"thetaskname".Do();
+			"TheTaskName".Do(() => wasExecuted = true);
+			"thetaskname".Run();
 
 			Assert.That(wasExecuted, Is.True);
 		}
@@ -55,7 +55,7 @@ namespace Scrape.Tests
 		[Test]
 		public void ExecutingNonExistentTaskThrowsUsefulException()
 		{
-			Assert.That(() => "UndefinedTask".Do(),
+			Assert.That(() => "UndefinedTask".Run(),
 				Throws.InstanceOf<UndefinedTaskException>()
 				.And.Message.EqualTo("Could not find the task named 'UndefinedTask'."));
 		}
@@ -67,18 +67,18 @@ namespace Scrape.Tests
 
 			"TheTask"
 				.DependsOn("Dependency1", "Dependency2", "Dependency3")
-				.Action(() => taskExecutionOrder.Add("TheTask"));
+				.Do(() => taskExecutionOrder.Add("TheTask"));
 
 			"Dependency1"
-				.Action(() => taskExecutionOrder.Add("Dependency1"));
+				.Do(() => taskExecutionOrder.Add("Dependency1"));
 
 			"Dependency2"
-				.Action(() => taskExecutionOrder.Add("Dependency2"));
+				.Do(() => taskExecutionOrder.Add("Dependency2"));
 
 			"Dependency3"
-				.Action(() => taskExecutionOrder.Add("Dependency3"));
+				.Do(() => taskExecutionOrder.Add("Dependency3"));
 
-			"TheTask".Do();
+			"TheTask".Run();
 
 			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"Dependency1", "Dependency2", "Dependency3", "TheTask"}));
 		}
@@ -90,16 +90,16 @@ namespace Scrape.Tests
 
 			"TheTask"
 				.DependsOn("ParentA")
-				.Action(() => taskExecutionOrder.Add("TheTask"));
+				.Do(() => taskExecutionOrder.Add("TheTask"));
 
 			"ParentA"
 				.DependsOn("ParentB")
-				.Action(() => taskExecutionOrder.Add("ParentA"));
+				.Do(() => taskExecutionOrder.Add("ParentA"));
 
 			"ParentB"
-				.Action(() => taskExecutionOrder.Add("ParentB"));
+				.Do(() => taskExecutionOrder.Add("ParentB"));
 
-			"TheTask".Do();
+			"TheTask".Run();
 
 			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"ParentB", "ParentA", "TheTask"}));
 		}

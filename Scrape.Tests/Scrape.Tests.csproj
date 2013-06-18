@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FluentInterfaceTests.cs" />
+    <Compile Include="MsBuilderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskMsBuildTests.cs" />
     <Compile Include="TaskTests.cs" />

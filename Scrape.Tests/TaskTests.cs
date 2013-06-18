@@ -10,15 +10,15 @@ namespace Scrape.Tests
 		public void TaskWithNoPreExecutorDefinedDoesNotFail()
 		{
 			var task = new Task("task-with-no-action", null, null);
-			task.Action(() => { });
-			Assert.That(() => task.Do(), Throws.Nothing);
+			task.Do(() => { });
+			Assert.That(() => task.Run(), Throws.Nothing);
 		}
 
 		[Test]
 		public void TaskWithNoActionDefinedDoesNotFail()
 		{
 			var task = new Task("task-with-no-action", t => { }, null);
-			Assert.That(() => task.Do(), Throws.Nothing);
+			Assert.That(() => task.Run(), Throws.Nothing);
 		}
 	}
 }

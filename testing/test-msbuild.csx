@@ -11,7 +11,7 @@ Require<Scrape>();
 		});
 
 "Dependency"
-	.Action(() =>
+	.Do(() =>
 		{
 			Console.WriteLine("Do some stuff here...");
 		});
@@ -29,4 +29,4 @@ Require<Scrape>();
 	// 		.Targets("Clean", "Compile")
 	// 		.Build());
 
-"Build".Do();
+"Build".Run();

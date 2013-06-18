@@ -34,7 +34,7 @@ namespace ScrapePack
 		private void RunDependencies(Task task)
 		{
 			foreach (var dependency in task.Dependencies)
-				dependency.Do();
+				dependency.Run();
 		}
 	}
 }

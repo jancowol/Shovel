@@ -4,28 +4,28 @@ Require<Scrape>();
 
 "Simple"
 	.DependsOn("Clean", "PrepareRocketLaunchers")
-	.Action(() =>
+	.Do(() =>
 	{
 		Console.WriteLine("Simplifying...");
 	});
 
 "Clean"
 	.DependsOn("WipeTheFloor")
-	.Action(() =>
+	.Do(() =>
 	{
 		Console.WriteLine("Cleaning...");
 	});
 
 "WipeTheFloor"
-	.Action(() =>
+	.Do(() =>
 	{
 		Console.WriteLine("Wiping the floor...");
 	});
 
 "PrepareRocketLaunchers"
-	.Action(() =>
+	.Do(() =>
 	{
 		Console.WriteLine("Loading rocket launchers...");
 	});
 
-"Simple".Do();
+"Simple".Run();

@@ -4,20 +4,21 @@ namespace ScrapePack
 {
 	public class MsBuilder : IMsBuilder
 	{
+		private readonly IMsBuildRunner _msBuildRunner;
+
+		public MsBuilder() : this(new MsBuildRunner())
+		{
+		}
+
+		public MsBuilder(IMsBuildRunner msBuildRunner)
+		{
+			_msBuildRunner = msBuildRunner;
+		}
+
 		public void Build(MsBuildProperties properties)
 		{
-			var process = new System.Diagnostics.Process();
-			process.StartInfo = new System.Diagnostics.ProcessStartInfo()
-				{
-					FileName = "MSBuild.exe",
-					Arguments = properties.Project,
-					UseShellExecute = false,
-					RedirectStandardOutput = true
-				};
-			process.OutputDataReceived += (sender, eventArgs) => Console.WriteLine(eventArgs.Data);
-			process.Start();
-			process.BeginOutputReadLine();
-			process.WaitForExit();
+			var arguments = new[] {properties.Project};
+			_msBuildRunner.Run(arguments);
 		}
 	}
 }

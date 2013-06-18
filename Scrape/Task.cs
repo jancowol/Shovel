@@ -23,7 +23,7 @@ namespace ScrapePack
 
 		public string Name { get; private set; }
 
-		public Task Action(Action action)
+		public Task Do(Action action)
 		{
 			_actions.Add(action);
 			return this;
@@ -35,7 +35,7 @@ namespace ScrapePack
 			return this;
 		}
 
-		public void Do()
+		public void Run()
 		{
 			foreach (var action in _actions)
 				action();
