@@ -5,16 +5,16 @@ namespace ScrapePack
 {
 	public class Task
 	{
-		private readonly IMsBuilder _msbuilder;
+		private readonly IDynamicServiceLocator _serviceLocator;
 		private readonly List<Action> _actions = new List<Action>();
 
 		// TODO: Make internal
-		public Task(string taskName, Action<Task> taskPreExecutor, IMsBuilder msbuilder)
+		public Task(string taskName, Action<Task> taskPreExecutor, IDynamicServiceLocator serviceLocator)
 		{
 			if (taskPreExecutor != null)
 				_actions.Add(() => taskPreExecutor(this));
 
-			_msbuilder = msbuilder;
+			_serviceLocator = serviceLocator;
 			Name = taskName;
 			Dependencies = new string[] { };
 		}
@@ -45,7 +45,9 @@ namespace ScrapePack
 		{
 			var buildProperties = new MsBuildProperties();
 			msBuildConfigurator(buildProperties);
-			_actions.Add(() => _msbuilder.Build(buildProperties));
+
+			var msbuilder = _serviceLocator.Resolve<IMsBuilder>();
+			_actions.Add(() => msbuilder.Build(buildProperties));
 
 			return this;
 		}

@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="DynamicServiceLocator.cs" />
+    <Compile Include="IDynamicServiceLocator.cs" />
     <Compile Include="IMsBuilder.cs" />
     <Compile Include="MsBuilder.cs" />
     <Compile Include="MsBuildProperties.cs" />
