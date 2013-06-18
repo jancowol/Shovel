@@ -11,12 +11,12 @@ namespace ScrapePack
 		// TODO: Make internal
 		public Task(string taskName, Action<Task> taskPreExecutor, IDynamicServiceLocator serviceLocator)
 		{
-			if (taskPreExecutor != null)
-				_actions.Add(() => taskPreExecutor(this));
-
 			_serviceLocator = serviceLocator;
 			Name = taskName;
 			Dependencies = new string[] { };
+
+			if (taskPreExecutor != null)
+				_actions.Add(() => taskPreExecutor(this));
 		}
 
 		public string[] Dependencies { get; private set; }
