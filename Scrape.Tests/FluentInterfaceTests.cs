@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 using ScrapePack;
 using ScriptCs.Contracts;
 
@@ -104,6 +103,18 @@ namespace Scrape.Tests
 
 			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"ParentB", "ParentA", "TheTask"}));
 		}
+
+		//[Test]
+		//public void CanDefineTaskWithMsBuildAction()
+		//{
+		//	var task = "TheMsBuildTask"
+		//		.MsBuild(prop =>
+		//			{
+		//				prop.Project = "the-project-to-build.csproj";
+		//			});
+
+		//	Assert.That(task.MsBuild);
+		//}
 
 		private static void AssertBuildValidTask(Func<string, Task> builder)
 		{

@@ -16,6 +16,12 @@ namespace ScrapePack
 				.NewTask(taskName, t => t.DependsOn(dependencies));
 		}
 
+		public static Task MsBuild(this string taskName, Action<MsBuildProperties> msBuildPropertyConfigurator)
+		{
+			return Context.TaskManager
+				.NewTask(taskName, t => { });
+		}
+
 		public static void Do(this string taskName)
 		{
 			Context.TaskManager

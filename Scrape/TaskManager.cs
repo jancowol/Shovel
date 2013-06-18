@@ -25,7 +25,7 @@ namespace ScrapePack
 
 		public Task NewTask(string taskName, Action<Task> initializer)
 		{
-			var task = new Task(taskName, RunDependencies);
+			var task = new Task(taskName, RunDependencies, new MsBuilder());
 			initializer(task);
 			AddTask(taskName, task);
 			return task;

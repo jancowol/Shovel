@@ -1,17 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ScrapePack
 {
 	public class Task
 	{
-		private readonly Action<Task> _taskPreExecutor;
-		private Action _action;
+		private readonly IMsBuilder _msbuilder;
+		private readonly List<Action> _actions = new List<Action>();
 
-		internal Task(string taskName, Action<Task> taskPreExecutor)
+		// TODO: Make internal
+		public Task(string taskName, Action<Task> taskPreExecutor, IMsBuilder msbuilder)
 		{
-			_taskPreExecutor = taskPreExecutor;
+			if (taskPreExecutor != null)
+				_actions.Add(() => taskPreExecutor(this));
+
+			_msbuilder = msbuilder;
 			Name = taskName;
-			Dependencies = new string[]{};
+			Dependencies = new string[] { };
 		}
 
 		public string[] Dependencies { get; private set; }
@@ -20,7 +25,7 @@ namespace ScrapePack
 
 		public Task Action(Action action)
 		{
-			_action = action;
+			_actions.Add(action);
 			return this;
 		}
 
@@ -32,8 +37,17 @@ namespace ScrapePack
 
 		public void Do()
 		{
-			_taskPreExecutor(this);
-			_action();
+			foreach (var action in _actions)
+				action();
+		}
+
+		public Task MsBuild(Action<MsBuildProperties> msBuildConfigurator)
+		{
+			var buildProperties = new MsBuildProperties();
+			msBuildConfigurator(buildProperties);
+			_actions.Add(() => _msbuilder.Build(buildProperties));
+
+			return this;
 		}
 	}
 }

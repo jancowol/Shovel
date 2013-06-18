@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="IMsBuilder.cs" />
+    <Compile Include="MsBuilder.cs" />
+    <Compile Include="MsBuildProperties.cs" />
     <Compile Include="ScrapeExtensions.cs" />
     <Compile Include="ScrapeScriptPack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
