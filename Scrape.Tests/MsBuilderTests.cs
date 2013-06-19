@@ -21,34 +21,30 @@ namespace Scrape.Tests
 		[Test]
 		public void ProjectNameShoudBeLastArgumentToMsBuild()
 		{
-			_msBuilder.Build(new MsBuildProperties()
-			{
-				Project = "the-project-name.csproj",
-				ArbitraryArguments = new[] { "/arbArgument1", "/argArgument2" }
-			});
+			var properties = new MsBuildProperties();
+			properties.Project = "the-project-name.csproj";
+			properties.ArbitraryArgs("/arbArgument1", "/argArgument2");
 
-			_msBuildRunner.Received().Run(Arg.Is<string[]>(a => a.Last().Equals("the-project-name.csproj")));
+			_msBuilder.Build(properties);
+
+			_msBuildRunner.Received()
+				.Run(
+					Arg.Is<string[]>(args => args.Last().Equals("the-project-name.csproj")));
 		}
 
 		[Test]
 		public void AllArbitraryArgumentsArePassedToMsbuildAsIs()
 		{
-			var arbitraryArguments = new[] {"/arbArg1", "-arbArg2", "/arbArg3:someValue"};
+			var arbitraryArguments = new[] { "/arbArg1", "-arbArg2", "/arbArg3:someValue" };
 
-			_msBuilder.Build(new MsBuildProperties()
-				{
-					ArbitraryArguments = arbitraryArguments
-				});
+			var properties = new MsBuildProperties();
+			properties.ArbitraryArgs(arbitraryArguments);
 
-			// How to check arguments with NSubstitute?
-			_msBuildRunner.Received().Run(Arg.Is<string[]>(a => ());
-			var actualArguments = GetActualRunnerArguments();
-			Assert.That(arbitraryArguments, Is.SubsetOf(actualArguments));
-		}
+			_msBuilder.Build(properties);
 
-		private object[] GetActualRunnerArguments()
-		{
-			return _msBuildRunner.ReceivedCalls().First(c => c.GetMethodInfo().Name == "Run").GetArguments();
+			_msBuildRunner.Received()
+				.Run(
+					Arg.Is<string[]>(args => arbitraryArguments.IsSubsetOf(args)));
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 
 namespace ScrapePack
 {
@@ -17,8 +17,10 @@ namespace ScrapePack
 
 		public void Build(MsBuildProperties properties)
 		{
-			var arguments = new[] {properties.Project};
-			_msBuildRunner.Run(arguments);
+			var arguments = properties.ArbitraryArguments
+				.Concat(new[] {properties.Project});
+
+			_msBuildRunner.Run(arguments.ToArray());
 		}
 	}
 }

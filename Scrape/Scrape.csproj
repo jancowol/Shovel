@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="DynamicServiceLocator.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IDynamicServiceLocator.cs" />
     <Compile Include="IMsBuilder.cs" />
     <Compile Include="IMsBuildRunner.cs" />
