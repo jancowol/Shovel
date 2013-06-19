@@ -1,4 +1,5 @@
-﻿using NSubstitute;
+﻿using System;
+using NSubstitute;
 using NUnit.Framework;
 using ScrapePack;
 
@@ -10,21 +11,23 @@ namespace Scrape.Tests
 		[Test]
 		public void TaskConfiguredWithMsBuildInvokesMsBuildWhenExecuted()
 		{
-			var msBuildRunner = Substitute.For<IMsBuildRunner>();
-			var serviceLocator = Substitute.For<IDynamicServiceLocator>();
-			serviceLocator
-				.Resolve<IMsBuildRunner>()
-				.Returns(msBuildRunner);
+			// TODO: Suspect there's an MsBuild related class trying to get out of the Task class...
+			throw new NotImplementedException();
+			//var msBuildRunner = Substitute.For<IMsBuildRunner>();
+			//var serviceLocator = Substitute.For<IDynamicServiceLocator>();
+			//serviceLocator
+			//	.Resolve<IMsBuildRunner>()
+			//	.Returns(msBuildRunner);
 
-			var task = new Task("TestMsBuildTask", t => { }, serviceLocator);
-			MsBuildPropertyBuilder msbuildPropertyBuilder = null;
-			task.MsBuild(prop => msbuildPropertyBuilder = prop);
+			//var task = new Task("TestMsBuildTask", t => { }, serviceLocator);
+			//MsBuildPropertyBuilder msbuildPropertyBuilder = null;
+			//task.MsBuild(prop => msbuildPropertyBuilder = prop);
 
-			task.Run();
+			//task.Run();
 
-			msBuildRunner
-				.Received()
-				.Run(msbuildPropertyBuilder);
+			//msBuildRunner
+			//	.Received()
+			//	.Run(msbuildPropertyBuilder);
 		}
 	}
 }

@@ -15,18 +15,18 @@ namespace ScrapePack
 			_processRunner = processRunner;
 		}
 
-		public void Run(MsBuildPropertyBuilder msbuildPropertyBuilder)
+		public void Run(MsBuildProperties msBuildProperties)
 		{
-			_processRunner.RunProcess("MSBuild.exe", BuildArguments(msbuildPropertyBuilder));
+			_processRunner.RunProcess("MSBuild.exe", BuildArguments(msBuildProperties));
 		}
 
-		private static string[] BuildArguments(MsBuildPropertyBuilder msBuildPropertyBuilder)
+		private static string[] BuildArguments(MsBuildProperties msBuildPropertyBuilder)
 		{
 			var args = new List<string>();
 
 			args.AddRange(msBuildPropertyBuilder.ArbitraryArguments);
 
-			foreach (var target in msBuildPropertyBuilder.Targs)
+			foreach (var target in msBuildPropertyBuilder.Targets)
 				args.Add("/target:" + target);
 
 			args.Add(msBuildPropertyBuilder.Project);

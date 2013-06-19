@@ -43,11 +43,12 @@ namespace ScrapePack
 
 		public Task MsBuild(Action<MsBuildPropertyBuilder> msBuildConfigurator)
 		{
-			var buildProperties = new MsBuildPropertyBuilder();
-			msBuildConfigurator(buildProperties);
+			var msBuildProperties = new MsBuildProperties();
+			var propertyBuilder = new MsBuildPropertyBuilder(msBuildProperties);
+			msBuildConfigurator(propertyBuilder);
 
 			var msBuildRunner = _serviceLocator.Resolve<IMsBuildRunner>();
-			_actions.Add(() => msBuildRunner.Run(buildProperties));
+			_actions.Add(() => msBuildRunner.Run(msBuildProperties));
 
 			return this;
 		}

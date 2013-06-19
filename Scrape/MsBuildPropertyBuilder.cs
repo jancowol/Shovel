@@ -1,27 +1,33 @@
-﻿using System.Collections.Generic;
-
-namespace ScrapePack
+﻿namespace ScrapePack
 {
 	public class MsBuildPropertyBuilder
 	{
-		public MsBuildPropertyBuilder()
+		private readonly MsBuildProperties _msBuildProperties;
+
+		public MsBuildPropertyBuilder(MsBuildProperties properties)
 		{
-			ArbitraryArguments = new string[0];
-			Targs = new string[0];
+			_msBuildProperties = properties;
 		}
 
-		public string Project { get; set; }
-		public string[] ArbitraryArguments { get; private set; }
-		public string[] Targs { get; private set; }
+		public MsBuildProperties MsBuildProperties
+		{
+			get { return _msBuildProperties; }
+		}
+
+		public string Project
+		{
+			get { return _msBuildProperties.Project; }
+			set { _msBuildProperties.Project = value; }
+		}
 
 		public void ArbitraryArgs(params string[] args)
 		{
-			ArbitraryArguments = args;
+			MsBuildProperties.ArbitraryArguments = args;
 		}
 
 		public void Targets(params string[] targets)
 		{
-			Targs = targets;
+			MsBuildProperties.Targets = targets;
 		}
 	}
 }

@@ -22,9 +22,9 @@ namespace Scrape.Tests
 		[Test]
 		public void ProjectNameShoudBeLastArgumentToMsBuild()
 		{
-			var properties = new MsBuildPropertyBuilder();
+			var properties = new MsBuildProperties();
 			properties.Project = "the-project-name.csproj";
-			properties.ArbitraryArgs("/arbArgument1", "/argArgument2");
+			properties.ArbitraryArguments = new[] { "/arbArgument1", "/argArgument2" };
 
 			_msBuildRunner.Run(properties);
 
@@ -38,8 +38,8 @@ namespace Scrape.Tests
 		public void AllArbitraryArgumentsArePassedToMsbuildAsIs()
 		{
 			var arbitraryArguments = new[] { "/arbArg1", "-arbArg2", "/arbArg3:someValue" };
-			var properties = new MsBuildPropertyBuilder();
-			properties.ArbitraryArgs(arbitraryArguments);
+			var properties = new MsBuildProperties();
+			properties.ArbitraryArguments = arbitraryArguments;
 
 			_msBuildRunner.Run(properties);
 
@@ -52,8 +52,8 @@ namespace Scrape.Tests
 		[Test]
 		public void AllTargetsArePassedToMsBuildInCorrectFormat()
 		{
-			var properties = new MsBuildPropertyBuilder();
-			properties.Targets("Clean", "Compile");
+			var properties = new MsBuildProperties();
+			properties.Targets = new[] { "Clean", "Compile" };
 
 			_msBuildRunner.Run(properties);
 
