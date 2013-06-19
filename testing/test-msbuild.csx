@@ -8,8 +8,14 @@ Require<Scrape>();
 		{
 			msb.ArbitraryArgs("/nologo", "/detailedsummary");
 			msb.Project = @"test-msbuild\test-msbuild.csproj";
-			// msb.Targets("Clean", "Compile");
+			msb.Targets("Clean", "Compile");
 		});
+
+	// .MsBuild(new MsBuildProperties()
+	// 	{
+	// 		ArbitraryArgs = new [] {"arg1", "arg2"},
+	// 		Project = "the-project-name.csproj",
+	// 		Targets = new[]{"Clean", "Compile"}});
 
 "Dependency"
 	.Do(() =>

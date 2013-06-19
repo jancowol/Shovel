@@ -2,6 +2,6 @@
 {
 	public interface IMsBuildRunner
 	{
-		void Run(string[] arguments);
+		void Run(MsBuildPropertyBuilder msbuildPropertyBuilder);
 	}
 }

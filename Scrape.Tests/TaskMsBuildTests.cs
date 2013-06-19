@@ -10,25 +10,21 @@ namespace Scrape.Tests
 		[Test]
 		public void TaskConfiguredWithMsBuildInvokesMsBuildWhenExecuted()
 		{
-			var msbuilder = Substitute.For<IMsBuilder>();
-
+			var msBuildRunner = Substitute.For<IMsBuildRunner>();
 			var serviceLocator = Substitute.For<IDynamicServiceLocator>();
 			serviceLocator
-				.Resolve<IMsBuilder>()
-				.Returns(msbuilder);
+				.Resolve<IMsBuildRunner>()
+				.Returns(msBuildRunner);
 
 			var task = new Task("TestMsBuildTask", t => { }, serviceLocator);
-			task.MsBuild(prop =>
-				{
-					prop.Project = "the-project-file.csproj";
-				});
+			MsBuildPropertyBuilder msbuildPropertyBuilder = null;
+			task.MsBuild(prop => msbuildPropertyBuilder = prop);
 
 			task.Run();
 
-			msbuilder
+			msBuildRunner
 				.Received()
-				.Build(
-					Arg.Is<MsBuildProperties>(p => p.Project == "the-project-file.csproj"));
+				.Run(msbuildPropertyBuilder);
 		}
 	}
 }

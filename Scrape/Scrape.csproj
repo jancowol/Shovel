@@ -46,12 +46,12 @@
     <Compile Include="Context.cs" />
     <Compile Include="DynamicServiceLocator.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="ExternalProcessRunner.cs" />
     <Compile Include="IDynamicServiceLocator.cs" />
-    <Compile Include="IMsBuilder.cs" />
     <Compile Include="IMsBuildRunner.cs" />
-    <Compile Include="MsBuilder.cs" />
-    <Compile Include="MsBuildProperties.cs" />
+    <Compile Include="MsBuildPropertyBuilder.cs" />
     <Compile Include="MsBuildRunner.cs" />
+    <Compile Include="ProcessRunner.cs" />
     <Compile Include="ScrapeExtensions.cs" />
     <Compile Include="ScrapeScriptPack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
