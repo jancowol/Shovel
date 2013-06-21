@@ -40,6 +40,7 @@ namespace ScrapePack
 			return task;
 		}
 
+		// TODO: Very simplistic way of running dependencies. Does not take into account the possibility of running the same dependency more than once. Fix.
 		private void RunDependencies(ITask task)
 		{
 			foreach (var dependency in task.Dependencies)

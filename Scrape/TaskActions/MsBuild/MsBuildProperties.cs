@@ -23,5 +23,7 @@ namespace ScrapePack.TaskActions.MsBuild
 			get { return _targets; }
 			set { _targets = value; }
 		}
+
+		public bool NoLogo { get; set; }
 	}
 }

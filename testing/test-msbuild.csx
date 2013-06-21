@@ -6,9 +6,10 @@ Require<Scrape>();
 	.DependsOn("Dependency")
 	.MsBuild(msb =>
 		{
-			msb.ArbitraryArgs("/nologo", "/detailedsummary");
+			msb.ArbitraryArgs("/detailedsummary");
 			msb.Project = @"test-msbuild\test-msbuild.csproj";
 			msb.Targets("Clean", "Compile");
+			msb.NoLogo();
 		});
 
 "Dependency"

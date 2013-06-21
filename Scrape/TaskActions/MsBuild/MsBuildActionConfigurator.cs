@@ -29,5 +29,10 @@ namespace ScrapePack.TaskActions.MsBuild
 		{
 			MsBuildProperties.Targets = targets;
 		}
+
+		public void NoLogo()
+		{
+			MsBuildProperties.NoLogo = true;
+		}
 	}
 }

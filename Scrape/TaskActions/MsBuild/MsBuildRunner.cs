@@ -20,16 +20,19 @@ namespace ScrapePack.TaskActions.MsBuild
 			_processRunner.RunProcess("MSBuild.exe", BuildArguments(msBuildProperties));
 		}
 
-		private static string[] BuildArguments(MsBuildProperties msBuildPropertyBuilder)
+		private static string[] BuildArguments(MsBuildProperties msBuildProperties)
 		{
 			var args = new List<string>();
 
-			args.AddRange(msBuildPropertyBuilder.ArbitraryArguments);
+			args.AddRange(msBuildProperties.ArbitraryArguments);
 
-			foreach (var target in msBuildPropertyBuilder.Targets)
+			if (msBuildProperties.NoLogo)
+				args.Add("/nologo");
+
+			foreach (var target in msBuildProperties.Targets)
 				args.Add("/target:" + target);
 
-			args.Add(msBuildPropertyBuilder.Project);
+			args.Add(msBuildProperties.Project);
 			return args.ToArray();
 		}
 	}

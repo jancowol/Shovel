@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using ScrapePack;
@@ -62,6 +61,20 @@ namespace Scrape.Tests
 				.RunProcess(
 					Arg.Any<string>(),
 					Arg.Is<string[]>(args => new[] { "/target:Clean", "/target:Compile" }.IsSubsetOf(args)));
+		}
+
+		[Test]
+		public void WhenNoLogoSpecifiedTheSwitchIsPassedToMsBuild()
+		{
+			var properties = new MsBuildProperties();
+			properties.NoLogo = true;
+
+			_msBuildRunner.Run(properties);
+
+			_processRunner.Received()
+				.RunProcess(
+					Arg.Any<string>(),
+					Arg.Is<string[]>(args => args.Contains("/nologo")));
 		}
 	}
 }
