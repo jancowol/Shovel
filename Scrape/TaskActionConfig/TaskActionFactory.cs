@@ -17,12 +17,14 @@ namespace ScrapePack.TaskActionConfig
 			_msBuildActionBuilder = msBuildActionBuilder;
 		}
 
-		public Action BuildAction<TActionConfigurator>(string configuratorKey, Action<TActionConfigurator> actionConfigurator)
+		public Action BuildAction<TActionConfigurator>(Type actionBuilderType, Action<TActionConfigurator> actionConfigurator)
 		{
 			IActionBuilder<TActionConfigurator> actionBuilder = null;
 
-			if (configuratorKey == "MsBuild")
+			if (actionBuilderType == typeof(MsBuildActionBuilder))
+			{
 				actionBuilder = _msBuildActionBuilder as IActionBuilder<TActionConfigurator>;
+			}
 
 			Action action;
 			if (actionBuilder != null)

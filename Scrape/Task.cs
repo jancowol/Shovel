@@ -44,14 +44,14 @@ namespace ScrapePack
 
 		public ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator)
 		{
-			AddNewAction("MsBuild", actionConfigurator);
+			AddNewAction(typeof (MsBuildActionBuilder), actionConfigurator);
 			return this;
 		}
 
-		private void AddNewAction<TActionConfigurator>(string configuratorKey, Action<TActionConfigurator> actionConfigurator)
+		private void AddNewAction<TActionConfigurator>(Type actionBuilderType, Action<TActionConfigurator> actionConfigurator)
 		{
 			_actions.Add(
-				_taskActionFactory.BuildAction(configuratorKey, actionConfigurator));
+				_taskActionFactory.BuildAction(actionBuilderType, actionConfigurator));
 		}
 	}
 }
