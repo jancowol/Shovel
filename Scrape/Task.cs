@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using ScrapePack.TaskActions.MsBuild;
 
 namespace ScrapePack
 {
-	public class Task
+	public interface ITask
 	{
-		private readonly IDynamicServiceLocator _serviceLocator;
-		private readonly List<Action> _actions = new List<Action>();
+		string[] Dependencies { get; }
+		string Name { get; }
+		ITask Do(Action action);
+		ITask DependsOn(string[] dependencies);
+		void Run();
+		ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator);
+	}
 
-		// TODO: Make internal
-		public Task(string taskName, Action<Task> taskPreExecutor, IDynamicServiceLocator serviceLocator)
+	public class Task : ITask
+	{
+		private readonly List<Action> _actions = new List<Action>();
+		private readonly TaskActionFactory _taskActionFactory;
+
+		public Task(string taskName, Action<ITask> taskPreExecutor, MsBuildActionBuilder msBuildActionBuilder)
 		{
-			_serviceLocator = serviceLocator;
 			Name = taskName;
 			Dependencies = new string[] { };
 
+			_taskActionFactory = new TaskActionFactory(msBuildActionBuilder);
 			if (taskPreExecutor != null)
 				_actions.Add(() => taskPreExecutor(this));
 		}
@@ -23,34 +33,34 @@ namespace ScrapePack
 
 		public string Name { get; private set; }
 
-		public Task Do(Action action)
-		{
-			_actions.Add(action);
-			return this;
-		}
-
-		public Task DependsOn(string[] dependencies)
-		{
-			Dependencies = dependencies;
-			return this;
-		}
-
 		public void Run()
 		{
 			foreach (var action in _actions)
 				action();
 		}
 
-		public Task MsBuild(Action<MsBuildPropertyBuilder> msBuildConfigurator)
+		public ITask Do(Action action)
 		{
-			var msBuildProperties = new MsBuildProperties();
-			var propertyBuilder = new MsBuildPropertyBuilder(msBuildProperties);
-			msBuildConfigurator(propertyBuilder);
-
-			var msBuildRunner = _serviceLocator.Resolve<IMsBuildRunner>();
-			_actions.Add(() => msBuildRunner.Run(msBuildProperties));
-
+			_actions.Add(action);
 			return this;
+		}
+
+		public ITask DependsOn(string[] dependencies)
+		{
+			Dependencies = dependencies;
+			return this;
+		}
+
+		public ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator)
+		{
+			AddNewAction(actionConfigurator);
+			return this;
+		}
+
+		private void AddNewAction<TActionConfigurator>(Action<TActionConfigurator> actionConfigurator)
+		{
+			_actions.Add(
+				_taskActionFactory.ConfigureAction(actionConfigurator));
 		}
 	}
 }

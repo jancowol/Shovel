@@ -48,21 +48,24 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="ExternalProcessRunner.cs" />
     <Compile Include="IDynamicServiceLocator.cs" />
-    <Compile Include="IMsBuildRunner.cs" />
-    <Compile Include="MsBuildProperties.cs" />
-    <Compile Include="MsBuildPropertyBuilder.cs" />
-    <Compile Include="MsBuildRunner.cs" />
     <Compile Include="ProcessRunner.cs" />
     <Compile Include="ScrapeExtensions.cs" />
     <Compile Include="ScrapeScriptPack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task.cs" />
+    <Compile Include="TaskActionFactory.cs" />
+    <Compile Include="TaskActions\MsBuild\IMsBuildRunner.cs" />
+    <Compile Include="TaskActions\MsBuild\MsBuildActionBuilder.cs" />
+    <Compile Include="TaskActions\MsBuild\MsBuildProperties.cs" />
+    <Compile Include="TaskActions\MsBuild\MsBuildActionConfigurator.cs" />
+    <Compile Include="TaskActions\MsBuild\MsBuildRunner.cs" />
     <Compile Include="TaskManager.cs" />
     <Compile Include="UndefinedTaskException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

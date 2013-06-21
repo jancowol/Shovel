@@ -1,4 +1,4 @@
-﻿namespace ScrapePack
+namespace ScrapePack.TaskActions.MsBuild
 {
 	public class MsBuildProperties
 	{

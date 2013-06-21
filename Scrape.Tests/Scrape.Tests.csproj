@@ -52,6 +52,7 @@
     <Compile Include="FluentInterfaceTests.cs" />
     <Compile Include="MsBuildRunnerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScrapeExtensionTests.cs" />
     <Compile Include="TaskMsBuildTests.cs" />
     <Compile Include="TaskTests.cs" />
   </ItemGroup>

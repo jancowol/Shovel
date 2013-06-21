@@ -1,7 +1,8 @@
 ﻿namespace ScrapePack
 {
-	static class Context
+	// TODO: Make internal
+	public static class Context
 	{
-		public static TaskManager TaskManager { get; set; }
+		public static ITaskManager TaskManager { get; set; }
 	}
 }

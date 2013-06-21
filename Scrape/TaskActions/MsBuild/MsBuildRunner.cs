@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace ScrapePack
+namespace ScrapePack.TaskActions.MsBuild
 {
 	public class MsBuildRunner : IMsBuildRunner
 	{

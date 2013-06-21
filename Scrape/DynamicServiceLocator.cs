@@ -1,7 +1,9 @@
 ﻿using System;
+using ScrapePack.TaskActions.MsBuild;
 
 namespace ScrapePack
 {
+	// TODO: Remove if not used soon
 	public class DynamicServiceLocator : IDynamicServiceLocator
 	{
 		public TService Resolve<TService>() where TService : class

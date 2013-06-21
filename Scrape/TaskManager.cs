@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using ScrapePack.TaskActions.MsBuild;
 
 namespace ScrapePack
 {
-	public class TaskManager
+	public interface ITaskManager
 	{
-		private readonly Dictionary<string, Task> _tasks = new Dictionary<string, Task>();
+		ITask FindTask(string taskName);
+		void AddTask(string taskName, Task task);
+		ITask NewTask(string taskName, Action<ITask> initializer);
+	}
 
-		public Task FindTask(string taskName)
+	public class TaskManager : ITaskManager
+	{
+		private readonly Dictionary<string, ITask> _tasks = new Dictionary<string, ITask>();
+
+		public ITask FindTask(string taskName)
 		{
 			var taskKey = taskName.ToLower();
-			Task task;
+			ITask task;
 
 			if (_tasks.TryGetValue(taskKey, out task))
 				return task;
@@ -23,15 +31,15 @@ namespace ScrapePack
 			_tasks.Add(taskName.ToLower(), task);
 		}
 
-		public Task NewTask(string taskName, Action<Task> initializer)
+		public ITask NewTask(string taskName, Action<ITask> initializer)
 		{
-			var task = new Task(taskName, RunDependencies, new DynamicServiceLocator());
+			var task = new Task(taskName, RunDependencies, new MsBuildActionBuilder());
 			initializer(task);
 			AddTask(taskName, task);
 			return task;
 		}
 
-		private void RunDependencies(Task task)
+		private void RunDependencies(ITask task)
 		{
 			foreach (var dependency in task.Dependencies)
 				dependency.Run();

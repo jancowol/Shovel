@@ -113,10 +113,12 @@ namespace Scrape.Tests
 		//				prop.Project = "the-project-to-build.csproj";
 		//			});
 
-		//	Assert.That(task.MsBuild);
+		//	"TheMsBuildTask".Run();
+
+		//	//Assert.That(task.MsBuild);
 		//}
 
-		private static void AssertBuildValidTask(Func<string, Task> builder)
+		private static void AssertBuildValidTask(Func<string, ITask> builder)
 		{
 			const string taskName = "MyNewTask";
 

@@ -1,10 +1,10 @@
-﻿namespace ScrapePack
+namespace ScrapePack.TaskActions.MsBuild
 {
-	public class MsBuildPropertyBuilder
+	public class MsBuildActionConfigurator
 	{
 		private readonly MsBuildProperties _msBuildProperties;
 
-		public MsBuildPropertyBuilder(MsBuildProperties properties)
+		public MsBuildActionConfigurator(MsBuildProperties properties)
 		{
 			_msBuildProperties = properties;
 		}

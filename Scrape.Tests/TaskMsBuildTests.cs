@@ -20,7 +20,7 @@ namespace Scrape.Tests
 			//	.Returns(msBuildRunner);
 
 			//var task = new Task("TestMsBuildTask", t => { }, serviceLocator);
-			//MsBuildPropertyBuilder msbuildPropertyBuilder = null;
+			//MsBuildActionConfigurator msbuildPropertyBuilder = null;
 			//task.MsBuild(prop => msbuildPropertyBuilder = prop);
 
 			//task.Run();

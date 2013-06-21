@@ -3,6 +3,7 @@ using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using ScrapePack;
+using ScrapePack.TaskActions.MsBuild;
 
 namespace Scrape.Tests
 {
