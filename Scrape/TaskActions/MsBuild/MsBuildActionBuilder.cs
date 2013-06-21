@@ -1,12 +1,8 @@
 using System;
+using ScrapePack.TaskActionConfig;
 
 namespace ScrapePack.TaskActions.MsBuild
 {
-	public interface IActionBuilder<out TConfigurationBuilder>
-	{
-		Action ConfigureAction(Action<TConfigurationBuilder> configureMsBuild);
-	}
-
 	public class MsBuildActionBuilder : IActionBuilder<MsBuildActionConfigurator>
 	{
 		private readonly IMsBuildRunner _msBuildRunner;
@@ -21,12 +17,12 @@ namespace ScrapePack.TaskActions.MsBuild
 			_msBuildRunner = msBuildRunner;
 		}
 
-		public Action ConfigureAction(Action<MsBuildActionConfigurator> configureMsBuild)
+		public Action ConfigureAction(Action<MsBuildActionConfigurator> configure)
 		{
 			var msBuildProperties = new MsBuildProperties();
 			var actionConfigurator = new MsBuildActionConfigurator(msBuildProperties);
 
-			configureMsBuild(actionConfigurator);
+			configure(actionConfigurator);
 
 			return
 				() => _msBuildRunner.Run(msBuildProperties);

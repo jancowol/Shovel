@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using ScrapePack;
+using ScrapePack.TaskActionConfig;
+using ScrapePack.TaskActions.MsBuild;
 
 namespace Scrape.Tests
 {
@@ -9,7 +11,7 @@ namespace Scrape.Tests
 		[Test]
 		public void TaskWithNoPreExecutorDefinedDoesNotFail()
 		{
-			var task = new Task("task-with-no-action", null, null);
+			var task = new Task("task-with-no-action", null, new TaskActionFactory(null));
 			task.Do(() => { });
 			Assert.That(() => task.Run(), Throws.Nothing);
 		}
@@ -17,7 +19,7 @@ namespace Scrape.Tests
 		[Test]
 		public void TaskWithNoActionDefinedDoesNotFail()
 		{
-			var task = new Task("task-with-no-action", t => { }, null);
+			var task = new Task("task-with-no-action", t => { }, new TaskActionFactory(null));
 			Assert.That(() => task.Run(), Throws.Nothing);
 		}
 	}

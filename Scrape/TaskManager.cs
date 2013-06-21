@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ScrapePack.TaskActions.MsBuild;
+using ScrapePack.TaskActionConfig;
 
 namespace ScrapePack
 {
@@ -33,9 +33,10 @@ namespace ScrapePack
 
 		public ITask NewTask(string taskName, Action<ITask> initializer)
 		{
-			var task = new Task(taskName, RunDependencies, new MsBuildActionBuilder());
+			var task = new Task(taskName, RunDependencies, new TaskActionFactory());
 			initializer(task);
 			AddTask(taskName, task);
+
 			return task;
 		}
 

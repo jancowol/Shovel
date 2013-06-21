@@ -48,12 +48,14 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="ExternalProcessRunner.cs" />
     <Compile Include="IDynamicServiceLocator.cs" />
+    <Compile Include="ITask.cs" />
     <Compile Include="ProcessRunner.cs" />
     <Compile Include="ScrapeExtensions.cs" />
     <Compile Include="ScrapeScriptPack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task.cs" />
-    <Compile Include="TaskActionFactory.cs" />
+    <Compile Include="TaskActionConfig\TaskActionFactory.cs" />
+    <Compile Include="TaskActionConfig\IActionBuilder.cs" />
     <Compile Include="TaskActions\MsBuild\IMsBuildRunner.cs" />
     <Compile Include="TaskActions\MsBuild\MsBuildActionBuilder.cs" />
     <Compile Include="TaskActions\MsBuild\MsBuildProperties.cs" />

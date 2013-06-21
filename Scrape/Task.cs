@@ -1,30 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using ScrapePack.TaskActionConfig;
 using ScrapePack.TaskActions.MsBuild;
 
 namespace ScrapePack
 {
-	public interface ITask
-	{
-		string[] Dependencies { get; }
-		string Name { get; }
-		ITask Do(Action action);
-		ITask DependsOn(string[] dependencies);
-		void Run();
-		ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator);
-	}
-
 	public class Task : ITask
 	{
 		private readonly List<Action> _actions = new List<Action>();
 		private readonly TaskActionFactory _taskActionFactory;
 
-		public Task(string taskName, Action<ITask> taskPreExecutor, MsBuildActionBuilder msBuildActionBuilder)
+		public Task(string taskName, Action<ITask> taskPreExecutor, TaskActionFactory taskActionFactory)
 		{
 			Name = taskName;
 			Dependencies = new string[] { };
+			_taskActionFactory = taskActionFactory;
 
-			_taskActionFactory = new TaskActionFactory(msBuildActionBuilder);
 			if (taskPreExecutor != null)
 				_actions.Add(() => taskPreExecutor(this));
 		}
@@ -53,14 +44,14 @@ namespace ScrapePack
 
 		public ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator)
 		{
-			AddNewAction(actionConfigurator);
+			AddNewAction("MsBuild", actionConfigurator);
 			return this;
 		}
 
-		private void AddNewAction<TActionConfigurator>(Action<TActionConfigurator> actionConfigurator)
+		private void AddNewAction<TActionConfigurator>(string configuratorKey, Action<TActionConfigurator> actionConfigurator)
 		{
 			_actions.Add(
-				_taskActionFactory.ConfigureAction(actionConfigurator));
+				_taskActionFactory.BuildAction(configuratorKey, actionConfigurator));
 		}
 	}
 }
