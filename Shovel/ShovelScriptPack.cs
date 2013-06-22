@@ -13,7 +13,7 @@ namespace ShovelPack
 		public void Initialize(IScriptPackSession session)
 		{
 			session.ImportNamespace("ShovelPack");
-			TaskManagerContext.TaskManager = new TaskManager();
+			TaskManagerContext.Initialize();
 		}
 
 		public void Terminate()

@@ -1,38 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using NSubstitute;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
-using ScriptCs.Contracts;
 using ShovelPack;
 using ShovelPack.Tasks;
 
 namespace Shovel.Tests
 {
 	[TestFixture]
-	public class FluentInterfaceTests
+	public class AcceptanceTests : ShovelAcceptanceTestsBase
 	{
-		[SetUp]
-		public void Setup()
-		{
-			var scriptPack = new ShovelScriptPack();
-			var scriptPackSession = Substitute.For<IScriptPackSession>();
-			scriptPack.Initialize(scriptPackSession);
-		}
-
-		[Test]
-		public void CanDefineNewTaskFromAction()
-		{
-			AssertBuildValidTask(taskName =>
-				taskName.Do(() => { }));
-		}
-
-		[Test]
-		public void CanDefineNewTaskFromDependsOn()
-		{
-			AssertBuildValidTask(taskName =>
-				taskName.DependsOn("TaskItsDependentOn"));
-		}
-
 		[Test]
 		public void CanExecuteTaskByName()
 		{
@@ -58,7 +33,7 @@ namespace Shovel.Tests
 		{
 			Assert.That(() => "UndefinedTask".Run(),
 				Throws.InstanceOf<UndefinedTaskException>()
-				.And.Message.EqualTo("Could not find the task named 'UndefinedTask'."));
+					.And.Message.EqualTo("Could not find the task named 'UndefinedTask'."));
 		}
 
 		[Test]
@@ -81,7 +56,7 @@ namespace Shovel.Tests
 
 			"TheTask".Run();
 
-			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"Dependency1", "Dependency2", "Dependency3", "TheTask"}));
+			Assert.That(taskExecutionOrder, Is.EqualTo(new[] { "Dependency1", "Dependency2", "Dependency3", "TheTask" }));
 		}
 
 		[Test]
@@ -102,31 +77,7 @@ namespace Shovel.Tests
 
 			"TheTask".Run();
 
-			Assert.That(taskExecutionOrder, Is.EqualTo(new[] {"ParentB", "ParentA", "TheTask"}));
-		}
-
-		//[Test]
-		//public void CanDefineTaskWithMsBuildAction()
-		//{
-		//	var task = "TheMsBuildTask"
-		//		.MsBuild(prop =>
-		//			{
-		//				prop.Project = "the-project-to-build.csproj";
-		//			});
-
-		//	"TheMsBuildTask".Run();
-
-		//	//Assert.That(task.MsBuild);
-		//}
-
-		private static void AssertBuildValidTask(Func<string, ITask> builder)
-		{
-			const string taskName = "MyNewTask";
-
-			var task = builder(taskName);
-
-			Assert.That(task, Is.Not.Null);
-			Assert.That(task.Name, Is.EqualTo(taskName));
+			Assert.That(taskExecutionOrder, Is.EqualTo(new[] { "ParentB", "ParentA", "TheTask" }));
 		}
 	}
 }

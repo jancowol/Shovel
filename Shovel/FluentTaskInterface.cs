@@ -4,7 +4,7 @@ using ShovelPack.Tasks;
 
 namespace ShovelPack
 {
-	public static class FluentTasks
+	public static class FluentTaskInterface
 	{
 		public static ITask Do(this string taskName, Action action)
 		{
