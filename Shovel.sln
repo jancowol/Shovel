@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shovel", "Shovel.csproj", "{9BD7A086-6456-4AD7-AB53-E356054A07A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shovel", "Shovel\Shovel.csproj", "{9BD7A086-6456-4AD7-AB53-E356054A07A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shovel.Tests", "..\Shovel.Tests\Shovel.Tests.csproj", "{AF4F8797-0313-4139-B540-0255F2C209E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shovel.Tests", "Shovel.Tests\Shovel.Tests.csproj", "{AF4F8797-0313-4139-B540-0255F2C209E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
