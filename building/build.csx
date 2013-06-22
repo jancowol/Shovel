@@ -1,5 +1,5 @@
-var msbuilder = Require<Scrape>();
+var msbuilder = Require<Shovel>();
 
 msbuilder
-	.Project(@"..\Scrape\Scrape.sln")
+	.Project(@"..\Shovel\Shovel.sln")
 	.Build();

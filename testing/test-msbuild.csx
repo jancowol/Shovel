@@ -1,4 +1,4 @@
-Require<Scrape>();
+Require<Shovel>();
 
 // Demonstrate MSBuild wrapper
 
