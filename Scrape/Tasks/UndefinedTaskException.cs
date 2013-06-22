@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 
-namespace ScrapePack
+namespace ScrapePack.Tasks
 {
 	[Serializable]
 	public class UndefinedTaskException : Exception

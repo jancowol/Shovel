@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
-namespace ScrapePack
+namespace ScrapePack.Utils
 {
 	public interface IProcessRunner
 	{

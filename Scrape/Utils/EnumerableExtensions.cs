@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ScrapePack
+namespace ScrapePack.Utils
 {
 	public static class EnumerableExtensions
 	{

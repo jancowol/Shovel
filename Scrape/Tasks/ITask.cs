@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using ScrapePack.TaskActions.MsBuild;
 
-namespace ScrapePack
+namespace ScrapePack.Tasks
 {
 	public interface ITask
 	{

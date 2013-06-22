@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
 using ScrapePack;
+using ScrapePack.Tasks;
 using ScriptCs.Contracts;
 
 namespace Scrape.Tests

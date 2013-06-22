@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using ScrapePack.TaskActionConfig;
 using ScrapePack.TaskActions.MsBuild;
 
-namespace ScrapePack
+namespace ScrapePack.Tasks
 {
 	public class Task : ITask
 	{

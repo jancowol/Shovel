@@ -1,11 +1,8 @@
-﻿using ScriptCs.Contracts;
+﻿using ScrapePack.Tasks;
+using ScriptCs.Contracts;
 
 namespace ScrapePack
 {
-	public class Scrape : IScriptPackContext
-	{
-	}
-
 	public class ScrapeScriptPack : IScriptPack
 	{
 		public IScriptPackContext GetContext()
@@ -22,5 +19,9 @@ namespace ScrapePack
 		public void Terminate()
 		{
 		}
+	}
+
+	public class Scrape : IScriptPackContext
+	{
 	}
 }

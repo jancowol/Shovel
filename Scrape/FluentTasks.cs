@@ -1,9 +1,10 @@
 ﻿using System;
 using ScrapePack.TaskActions.MsBuild;
+using ScrapePack.Tasks;
 
 namespace ScrapePack
 {
-	public static class ScrapeExtensions
+	public static class FluentTasks
 	{
 		public static ITask Do(this string taskName, Action action)
 		{

@@ -1,4 +1,6 @@
-﻿namespace ScrapePack
+﻿using ScrapePack.Tasks;
+
+namespace ScrapePack
 {
 	// TODO: Make internal
 	public static class Context
