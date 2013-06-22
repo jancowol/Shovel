@@ -8,7 +8,7 @@ namespace Shovel.Tests
 	public class TaskTests
 	{
 		[Test]
-		public void TaskWithNoPreExecutorDefinedDoesNotFail()
+		public void TaskWithNoPreExecutorDefinedDoesNotFailWhenRun()
 		{
 			var task = new Task("task-with-no-action", null, new TaskActionFactory(null));
 			task.Do(() => { });
@@ -16,7 +16,7 @@ namespace Shovel.Tests
 		}
 
 		[Test]
-		public void TaskWithNoActionDefinedDoesNotFail()
+		public void TaskWithNoActionDefinedDoesNotFailWhenRun()
 		{
 			var task = new Task("task-with-no-action", t => { }, new TaskActionFactory(null));
 			Assert.That(() => task.Run(), Throws.Nothing);

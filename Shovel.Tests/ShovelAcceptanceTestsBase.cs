@@ -3,7 +3,7 @@ using ShovelPack;
 
 namespace Shovel.Tests
 {
-	public class ShovelAcceptanceTestsBase
+	public abstract class ShovelAcceptanceTestsBase
 	{
 		[SetUp]
 		public void Setup()
