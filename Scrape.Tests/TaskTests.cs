@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using ScrapePack;
 using ScrapePack.TaskActionConfig;
-using ScrapePack.TaskActions.MsBuild;
 
 namespace Scrape.Tests
 {

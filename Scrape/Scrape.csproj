@@ -44,10 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="DynamicServiceLocator.cs" />
     <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="ExternalProcessRunner.cs" />
-    <Compile Include="IDynamicServiceLocator.cs" />
     <Compile Include="ITask.cs" />
     <Compile Include="ProcessRunner.cs" />
     <Compile Include="ScrapeExtensions.cs" />

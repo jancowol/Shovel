@@ -9,30 +9,24 @@ namespace ScrapePack.TaskActions.MsBuild
 			_msBuildProperties = properties;
 		}
 
-		public MsBuildProperties MsBuildProperties
-		{
-			get { return _msBuildProperties; }
-		}
-
 		public string Project
 		{
-			get { return _msBuildProperties.Project; }
 			set { _msBuildProperties.Project = value; }
 		}
 
 		public void ArbitraryArgs(params string[] args)
 		{
-			MsBuildProperties.ArbitraryArguments = args;
+			_msBuildProperties.ArbitraryArguments = args;
 		}
 
 		public void Targets(params string[] targets)
 		{
-			MsBuildProperties.Targets = targets;
+			_msBuildProperties.Targets = targets;
 		}
 
 		public void NoLogo()
 		{
-			MsBuildProperties.NoLogo = true;
+			_msBuildProperties.NoLogo = true;
 		}
 	}
 }

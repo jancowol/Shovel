@@ -20,7 +20,7 @@ namespace ScrapePack
 				_actions.Add(() => taskPreExecutor(this));
 		}
 
-		public string[] Dependencies { get; private set; }
+		public IEnumerable<string> Dependencies { get; private set; }
 
 		public string Name { get; private set; }
 

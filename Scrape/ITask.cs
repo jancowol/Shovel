@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using ScrapePack.TaskActions.MsBuild;
 
 namespace ScrapePack
 {
 	public interface ITask
 	{
-		string[] Dependencies { get; }
+		IEnumerable<string> Dependencies { get; }
 		string Name { get; }
 		ITask Do(Action action);
-		ITask DependsOn(string[] dependencies);
+		ITask DependsOn(params string[] dependencies);
 		void Run();
 		ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator);
 	}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ScrapePack.TaskActions.MsBuild
 {
@@ -29,8 +30,8 @@ namespace ScrapePack.TaskActions.MsBuild
 			if (msBuildProperties.NoLogo)
 				args.Add("/nologo");
 
-			foreach (var target in msBuildProperties.Targets)
-				args.Add("/target:" + target);
+			args.AddRange(
+				msBuildProperties.Targets.Select(target => "/target:" + target));
 
 			args.Add(msBuildProperties.Project);
 			return args.ToArray();

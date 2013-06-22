@@ -7,7 +7,6 @@ namespace ScrapePack
 	public interface ITaskManager
 	{
 		ITask FindTask(string taskName);
-		void AddTask(string taskName, Task task);
 		ITask NewTask(string taskName, Action<ITask> initializer);
 	}
 
@@ -26,11 +25,6 @@ namespace ScrapePack
 			throw new UndefinedTaskException(String.Format("Could not find the task named '{0}'.", taskName));
 		}
 
-		public void AddTask(string taskName, Task task)
-		{
-			_tasks.Add(taskName.ToLower(), task);
-		}
-
 		public ITask NewTask(string taskName, Action<ITask> initializer)
 		{
 			var task = new Task(taskName, RunDependencies, new TaskActionFactory());
@@ -38,6 +32,11 @@ namespace ScrapePack
 			AddTask(taskName, task);
 
 			return task;
+		}
+
+		private void AddTask(string taskName, Task task)
+		{
+			_tasks.Add(taskName.ToLower(), task);
 		}
 
 		// TODO: Very simplistic way of running dependencies. Does not take into account the possibility of running the same dependency more than once. Fix.

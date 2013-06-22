@@ -12,13 +12,15 @@ namespace ScrapePack
 	{
 		public void RunProcess(string processExecutable, string[] processArguments)
 		{
-			var process = new Process();
-			process.StartInfo = new ProcessStartInfo()
+			var process = new Process
 				{
-					FileName = processExecutable,
-					Arguments = String.Join(" ", processArguments),
-					UseShellExecute = false,
-					RedirectStandardOutput = true
+					StartInfo = new ProcessStartInfo
+						{
+							FileName = processExecutable,
+							Arguments = String.Join(" ", processArguments),
+							UseShellExecute = false,
+							RedirectStandardOutput = true
+						}
 				};
 			process.OutputDataReceived += (sender, eventArgs) => Console.WriteLine(eventArgs.Data);
 			process.Start();
