@@ -1,7 +1,7 @@
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 
-namespace ShovelPack.Tasks
+namespace ShovelPack
 {
 	[Serializable]
 	public class UndefinedTaskException : Exception
@@ -21,6 +21,31 @@ namespace ShovelPack.Tasks
 		}
 
 		protected UndefinedTaskException(
+			SerializationInfo info,
+			StreamingContext context)
+			: base(info, context)
+		{
+		}
+	}
+
+	[Serializable]
+	public class DuplicateTaskException : Exception
+	{
+		public DuplicateTaskException()
+		{
+		}
+
+		public DuplicateTaskException(string message)
+			: base(message)
+		{
+		}
+
+		public DuplicateTaskException(string message, Exception inner)
+			: base(message, inner)
+		{
+		}
+
+		protected DuplicateTaskException(
 			SerializationInfo info,
 			StreamingContext context)
 			: base(info, context)

@@ -43,11 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions.cs" />
     <Compile Include="TaskManagerContext.cs" />
     <Compile Include="Tasks\ITask.cs" />
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\TaskManager.cs" />
-    <Compile Include="Tasks\UndefinedTaskException.cs" />
     <Compile Include="Utils\EnumerableExtensions.cs" />
     <Compile Include="FluentTaskInterface.cs" />
     <Compile Include="ShovelScriptPack.cs" />

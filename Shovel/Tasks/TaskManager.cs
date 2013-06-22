@@ -16,7 +16,7 @@ namespace ShovelPack.Tasks
 
 		public ITask FindTask(string taskName)
 		{
-			var taskKey = taskName.ToLower();
+			var taskKey = MakeTaskKey(taskName);
 			ITask task;
 
 			if (_tasks.TryGetValue(taskKey, out task))
@@ -27,6 +27,8 @@ namespace ShovelPack.Tasks
 
 		public ITask NewTask(string taskName, Action<ITask> initializer)
 		{
+			GuardAgainstDuplicateTaskName(taskName);
+
 			var task = new Task(taskName, RunDependencies, new TaskActionFactory());
 			initializer(task);
 			AddTask(taskName, task);
@@ -34,7 +36,7 @@ namespace ShovelPack.Tasks
 			return task;
 		}
 
-		private void AddTask(string taskName, Task task)
+		private void AddTask(string taskName, ITask task)
 		{
 			_tasks.Add(taskName.ToLower(), task);
 		}
@@ -44,6 +46,19 @@ namespace ShovelPack.Tasks
 		{
 			foreach (var dependency in task.Dependencies)
 				dependency.Run();
+		}
+
+		private void GuardAgainstDuplicateTaskName(string taskName)
+		{
+			if (_tasks.ContainsKey(MakeTaskKey(taskName)))
+			{
+				throw new DuplicateTaskException(string.Format("A task with the name '{0}' has alread been defined.", taskName));
+			}
+		}
+
+		private static string MakeTaskKey(string taskName)
+		{
+			return taskName.ToLower();
 		}
 	}
 }

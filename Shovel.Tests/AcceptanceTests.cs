@@ -79,5 +79,19 @@ namespace Shovel.Tests
 
 			Assert.That(taskExecutionOrder, Is.EqualTo(new[] { "ParentB", "ParentA", "TheTask" }));
 		}
+
+		[Test]
+		public void DuplicateTaskDefinitionThrowsUsefulException()
+		{
+			"TheTask".Do(() => { });
+
+			Assert.That(() =>
+				{
+					"THETASK".Do(() => { });
+				},
+				Throws.InstanceOf<DuplicateTaskException>()
+				.And
+				.Message.EqualTo("A task with the name 'THETASK' has alread been defined."));
+		}
 	}
 }
