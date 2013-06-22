@@ -1,7 +1,3 @@
 @echo off
-echo Building using MSBuild...
-msbuild /nologo /verbosity:minimal ..\Shovel\Shovel.sln
-rmdir /S /Q .\bin
-mkdir .\bin
-echo Copying built binaries...
-copy ..\Shovel\bin\Debug\*.* .\bin
+if exist bin\. rmdir /S /Q .\bin
+msbuild /nologo /verbosity:minimal /target:Rebuild /property:OutDir=..\..\building\bin ..\src\Shovel\Shovel.csproj
