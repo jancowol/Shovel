@@ -1,7 +1,11 @@
 @echo off
 
+echo Cleaning any binary artifacts...
+if exist bin\. rmdir /S /Q .\bin
+if exist bin-build-with-shovel\. rmdir /S /Q .\bin-build-with-shovel
+
 echo Bootstrapping Shovel binaries...
-call build-bootstrap.bat
+msbuild /nologo /verbosity:minimal /target:Rebuild /property:OutDir=..\..\building\bin ..\src\Shovel\Shovel.csproj
 echo Bootstrapping completed.
 
 echo Rebuilding Shovel with itself... Pretty nifty huh?
