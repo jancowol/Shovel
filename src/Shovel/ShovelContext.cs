@@ -16,15 +16,5 @@ namespace ShovelPack
 		{
 			TaskManager = taskManager;
 		}
-
-		public static void SetArguments(string[] scriptArgs)
-		{
-			ScriptArgs = scriptArgs;
-		}
-
-		public static void PerformPostScriptActions()
-		{
-			throw new System.NotImplementedException();
-		}
 	}
 }

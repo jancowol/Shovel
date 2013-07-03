@@ -18,22 +18,18 @@ namespace ShovelPack
 
 		public void Terminate()
 		{
+			// NOTE: The Terminate() method is currently the only hook we have into after any scripts have been run by scriptcs.
 			RunShovel();
 		}
 
 		private static void RunShovel()
 		{
-			var arguments = new Arguments(Environment.GetCommandLineArgs());
-			var executor = new ShovelRunner(ShovelContext.TaskManager, arguments);
+			var executor = new ShovelRunner(ShovelContext.TaskManager);
 			executor.Execute();
 		}
 	}
 
 	public class Shovel : IScriptPackContext
 	{
-		public void SetArguments(string[] scriptArgs)
-		{
-			ShovelContext.SetArguments(scriptArgs);
-		}
 	}
 }

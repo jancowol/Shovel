@@ -1,4 +1,5 @@
-﻿using ShovelPack.Tasks;
+﻿using System;
+using ShovelPack.Tasks;
 
 namespace ShovelPack
 {
@@ -6,6 +7,10 @@ namespace ShovelPack
 	{
 		private readonly ITaskManager _taskManager;
 		private readonly Arguments _arguments;
+
+		public ShovelRunner(ITaskManager taskManager) : this(taskManager, new Arguments(Environment.GetCommandLineArgs()))
+		{
+		}
 
 		public ShovelRunner(ITaskManager taskManager, Arguments arguments)
 		{
