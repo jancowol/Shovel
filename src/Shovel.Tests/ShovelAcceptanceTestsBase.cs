@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using ShovelPack;
+using ShovelPack.Tasks;
 
 namespace Shovel.Tests
 {
@@ -8,7 +9,7 @@ namespace Shovel.Tests
 		[SetUp]
 		public void Setup()
 		{
-			TaskManagerContext.Initialize();
+			ShovelContext.Initialize(new TaskManager());
 		}
 	}
 }

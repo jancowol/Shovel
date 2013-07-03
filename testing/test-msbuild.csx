@@ -8,7 +8,4 @@ Require<Shovel>();
 			msb.ArbitraryArgs("/verbosity:minimal");
 			msb.Project = @"test-msbuild\test-msbuild.csproj";
 			msb.Targets("Clean", "Compile");
-			// msb.NoLogo();
 		});
-
-"Build".Run();

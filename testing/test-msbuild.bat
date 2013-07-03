@@ -1,1 +1,1 @@
-scriptcs test-msbuild.csx -loglevel Error
+scriptcs test-msbuild.csx -loglevel Error -- -tasks:Build

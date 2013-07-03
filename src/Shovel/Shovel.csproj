@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arguments.cs" />
     <Compile Include="Exceptions.cs" />
-    <Compile Include="TaskManagerContext.cs" />
+    <Compile Include="ShovelRunner.cs" />
+    <Compile Include="ShovelContext.cs" />
     <Compile Include="Tasks\ITask.cs" />
+    <Compile Include="Tasks\ITaskManager.cs" />
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\TaskManager.cs" />
     <Compile Include="Utils\EnumerableExtensions.cs" />

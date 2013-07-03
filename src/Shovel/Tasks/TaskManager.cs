@@ -4,25 +4,13 @@ using ShovelPack.TaskActionConfig;
 
 namespace ShovelPack.Tasks
 {
-	public interface ITaskManager
-	{
-		ITask FindTask(string taskName);
-		ITask NewTask(string taskName, Action<ITask> initializer);
-	}
-
 	public class TaskManager : ITaskManager
 	{
 		private readonly Dictionary<string, ITask> _tasks = new Dictionary<string, ITask>();
 
-		public ITask FindTask(string taskName)
+		public ITask NewTask(string taskName)
 		{
-			var taskKey = MakeTaskKey(taskName);
-			ITask task;
-
-			if (_tasks.TryGetValue(taskKey, out task))
-				return task;
-
-			throw new UndefinedTaskException(String.Format("Could not find the task named '{0}'.", taskName));
+			return NewTask(taskName, t => { });
 		}
 
 		public ITask NewTask(string taskName, Action<ITask> initializer)
@@ -34,6 +22,23 @@ namespace ShovelPack.Tasks
 			AddTask(taskName, task);
 
 			return task;
+		}
+
+		public void RunTasks(params string[] taskNames)
+		{
+			foreach (var taskName in taskNames)
+				FindTask(taskName).Run();
+		}
+
+		public ITask FindTask(string taskName)
+		{
+			var taskKey = MakeTaskKey(taskName);
+			ITask task;
+
+			if (_tasks.TryGetValue(taskKey, out task))
+				return task;
+
+			throw new UndefinedTaskException(String.Format("Could not find the task named '{0}'.", taskName));
 		}
 
 		private void AddTask(string taskName, ITask task)

@@ -1,1 +1,1 @@
-scriptcs test-shovel.csx -loglevel Error
+scriptcs test-shovel.csx -loglevel Error -- -tasks:Simple

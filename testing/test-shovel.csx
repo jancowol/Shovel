@@ -27,5 +27,3 @@ Require<Shovel>();
 	{
 		Console.WriteLine("Loading rocket launchers...");
 	});
-
-"Simple".Run();

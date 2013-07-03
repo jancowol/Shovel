@@ -8,25 +8,25 @@ namespace ShovelPack
 	{
 		public static ITask Do(this string taskName, Action action)
 		{
-			return TaskManagerContext.TaskManager
+			return ShovelContext.TaskManager
 				.NewTask(taskName, t => t.Do(action));
 		}
 
 		public static ITask DependsOn(this string taskName, params string[] dependencies)
 		{
-			return TaskManagerContext.TaskManager
+			return ShovelContext.TaskManager
 				.NewTask(taskName, t => t.DependsOn(dependencies));
 		}
 
 		public static ITask MsBuild(this string taskName, Action<MsBuildActionConfigurator> actionConfigurator)
 		{
-			return TaskManagerContext.TaskManager
+			return ShovelContext.TaskManager
 				.NewTask(taskName, t => t.MsBuild(actionConfigurator));
 		}
 
 		public static void Run(this string taskName)
 		{
-			TaskManagerContext.TaskManager
+			ShovelContext.TaskManager
 				.FindTask(taskName)
 				.Run();
 		}
