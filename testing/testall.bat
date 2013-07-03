@@ -15,11 +15,11 @@ echo Running test scripts...
 echo.
 
 echo *** Test building with MSBuild...
-call test-msbuild.bat
+scriptcs test-msbuild.csx -loglevel Error -- -tasks:Build
 echo *** Done ***
 echo.
 
 echo *** Test basic task running...
-call test-shovel.bat
+scriptcs test-shovel.csx -loglevel Error -- -tasks:Simple
 echo *** Done ***
 echo.
