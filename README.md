@@ -1,7 +1,7 @@
 Shovel
 ======
 
-A ScriptCS script pack enabling the creation of ScriptCS (.csx) build scripts.
+A [scriptcs](https://github.com/scriptcs/scriptcs) script pack enabling the creation of scriptcs (.csx) build scripts.
 
 What is Shovel?
 ---------------
