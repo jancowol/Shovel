@@ -2,14 +2,14 @@
 cd %~dp0
 
 echo Rebuilding Shovel...
-pushd ..\building
+pushd ..\build
 call build.bat
 popd
 
 echo Copying latest build artifacts...
 if exist bin\. rmdir /S /Q .\bin
 mkdir bin
-copy ..\building\bin-built-with-shovel\*.* .\bin > NUL
+copy ..\build\bin-built-with-shovel\*.* .\bin > NUL
 
 echo Running test scripts...
 echo.
