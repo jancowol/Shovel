@@ -8,5 +8,3 @@ Require<Shovel>();
 			msb.Project = @"..\src\Shovel\Shovel.csproj";
 			msb.NoLogo();
 		});
-
-"Build".Run();
