@@ -2,10 +2,9 @@
 
 namespace ShovelPack
 {
-	internal static class ShovelContext
+	internal static class ShovelStaticContext
 	{
 		public static ITaskManager TaskManager { get; private set; }
-		public static string[] ScriptArgs { get; private set; }
 
 		public static void Initialize()
 		{

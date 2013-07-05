@@ -1,5 +1,4 @@
-﻿using System;
-using ScriptCs.Contracts;
+﻿using ScriptCs.Contracts;
 
 namespace ShovelPack
 {
@@ -13,7 +12,7 @@ namespace ShovelPack
 		public void Initialize(IScriptPackSession session)
 		{
 			session.ImportNamespace("ShovelPack");
-			ShovelContext.Initialize();
+			ShovelStaticContext.Initialize();
 		}
 
 		public void Terminate()
@@ -24,7 +23,7 @@ namespace ShovelPack
 
 		private static void RunShovel()
 		{
-			var executor = new ShovelRunner(ShovelContext.TaskManager);
+			var executor = new ShovelRunner(ShovelStaticContext.TaskManager);
 			executor.Execute();
 		}
 	}

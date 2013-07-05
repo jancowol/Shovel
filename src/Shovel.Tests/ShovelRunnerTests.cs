@@ -44,7 +44,7 @@ namespace Shovel.Tests
 		private void RunWithArguments(params string[] arguments)
 		{
 			var args = new Arguments();
-			var runner = new ShovelRunner(ShovelContext.TaskManager, args);
+			var runner = new ShovelRunner(ShovelStaticContext.TaskManager, args);
 			args.TasksToRun = arguments;
 
 			runner.Execute();
@@ -53,7 +53,7 @@ namespace Shovel.Tests
 		private void RunWithCommandLineArguments(params string[] arguments)
 		{
 			var args = new Arguments(arguments);
-			var runner = new ShovelRunner(ShovelContext.TaskManager, args);
+			var runner = new ShovelRunner(ShovelStaticContext.TaskManager, args);
 
 			runner.Execute();
 		}

@@ -9,7 +9,7 @@ namespace Shovel.Tests
 		[SetUp]
 		public void Setup()
 		{
-			ShovelContext.Initialize(new TaskManager());
+			ShovelStaticContext.Initialize(new TaskManager());
 		}
 	}
 }
