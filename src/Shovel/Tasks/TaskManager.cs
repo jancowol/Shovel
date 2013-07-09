@@ -38,7 +38,7 @@ namespace ShovelPack.Tasks
 			if (_tasks.TryGetValue(taskKey, out task))
 				return task;
 
-			throw new UndefinedTaskException(String.Format("Could not find the task named '{0}'.", taskName));
+			throw new UndefinedTaskException(taskName);
 		}
 
 		private void AddTask(string taskName, ITask task)

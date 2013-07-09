@@ -54,8 +54,10 @@
     <Compile Include="AcceptanceTests.cs" />
     <Compile Include="MsBuildRunnerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShovelRunnerErrorTests.cs" />
     <Compile Include="ShovelRunnerTests.cs" />
     <Compile Include="ShovelAcceptanceTestsBase.cs" />
+    <Compile Include="ShovelRunnerUndefinedTaskExceptionHandlingTests.cs" />
     <Compile Include="Tasks\TaskManagerTests.cs" />
     <Compile Include="TaskTests.cs" />
   </ItemGroup>

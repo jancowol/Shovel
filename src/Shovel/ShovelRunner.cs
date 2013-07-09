@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using ShovelPack.Tasks;
 
 namespace ShovelPack
@@ -20,8 +21,28 @@ namespace ShovelPack
 
 		public void Execute()
 		{
-			if (_arguments.TasksToRun != null)
-				_taskManager.RunTasks(_arguments.TasksToRun);
+			var errorOutput = new StringBuilder();
+
+			try
+			{
+				if (_arguments.TasksToRun != null)
+					_taskManager.RunTasks(_arguments.TasksToRun);
+			}
+			catch (UndefinedTaskException e)
+			{
+				// Common error, keep the output clean (no call stack in output)
+				errorOutput.AppendLine(e.Message);
+			}
+			catch (Exception e)
+			{
+				errorOutput.AppendLine(e.ToString());
+			}
+
+			if (errorOutput.Length != 0)
+			{
+				Console.Error.Write("SHOVEL_ERROR: ");
+				Console.Error.Write(errorOutput);
+			}
 		}
 	}
 }

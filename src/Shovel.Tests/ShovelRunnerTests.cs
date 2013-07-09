@@ -22,7 +22,7 @@ namespace Shovel.Tests
 		[Test]
 		public void When_a_task_is_specified_as_an_argument_Then_it_is_run()
 		{
-			RunWithCommandLineArguments("scriptcs", "the_script_name.csx", "-scriptcsArg1", "-scriptcsArg2", "--", "-tasks:task1");
+			RunWithArgumentsErrorChecked("scriptcs", "the_script_name.csx", "-scriptcsArg1", "-scriptcsArg2", "--", "-tasks:task1");
 
 			Assert.That(_executedTasks, Is.EquivalentTo(new[] { "task1" }));
 		}
@@ -30,7 +30,7 @@ namespace Shovel.Tests
 		[Test]
 		public void When_multiple_task_arguments_are_specified_Then_the_tasks_are_run_in_order()
 		{
-			RunWithCommandLineArguments("--", "-tasks:", "task1,", "task2,", "task3");
+			RunWithArgumentsErrorChecked("--", "-tasks:", "task1,", "task2,", "task3");
 
 			Assert.That(_executedTasks, Is.EqualTo(new[] { "task1", "task2", "task3" }));
 		}
@@ -38,24 +38,7 @@ namespace Shovel.Tests
 		[Test]
 		public void Given_no_tasks_to_run_were_specified_as_an_argument_When_executing_Then_it_should_not_fail()
 		{
-			Assert.That(() => RunWithArguments(), Throws.Nothing);
-		}
-
-		private void RunWithArguments(params string[] arguments)
-		{
-			var args = new Arguments();
-			var runner = new ShovelRunner(ShovelStaticContext.TaskManager, args);
-			args.TasksToRun = arguments;
-
-			runner.Execute();
-		}
-
-		private void RunWithCommandLineArguments(params string[] arguments)
-		{
-			var args = new Arguments(arguments);
-			var runner = new ShovelRunner(ShovelStaticContext.TaskManager, args);
-
-			runner.Execute();
+			Assert.That(() => RunWithArgumentsErrorChecked(), Throws.Nothing);
 		}
 	}
 }

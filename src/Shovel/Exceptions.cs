@@ -6,24 +6,10 @@ namespace ShovelPack
 	[Serializable]
 	public class UndefinedTaskException : Exception
 	{
-		public UndefinedTaskException()
-		{
-		}
+		const string message = "Could not find the task named '{0}'. Please check the output for possible script compilation errors.";
 
-		public UndefinedTaskException(string message)
-			: base(message)
-		{
-		}
-
-		public UndefinedTaskException(string message, Exception inner)
-			: base(message, inner)
-		{
-		}
-
-		protected UndefinedTaskException(
-			SerializationInfo info,
-			StreamingContext context)
-			: base(info, context)
+		public UndefinedTaskException(string taskName)
+			: base(string.Format(message, taskName))
 		{
 		}
 	}

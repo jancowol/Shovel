@@ -31,8 +31,7 @@ namespace Shovel.Tests
 		public void ExecutingNonExistentTaskThrowsUsefulException()
 		{
 			Assert.That(() => "UndefinedTask".Run(),
-				Throws.InstanceOf<UndefinedTaskException>()
-					.And.Message.EqualTo("Could not find the task named 'UndefinedTask'."));
+				Throws.InstanceOf<UndefinedTaskException>());
 		}
 
 		[Test]
