@@ -8,3 +8,15 @@ Require<Shovel>();
 			msb.Project = @"..\src\Shovel\Shovel.csproj";
 			msb.NoLogo();
 		});
+
+"Package"
+	.Do(() =>
+		{
+			Program.Run(@"NuGet pack ..\src\nuget\shovel.nuspec");
+		});
+
+/*
+// Ideally, should be able to do:
+"Package"
+	.Run(@"NuGet pack ..\src\nuget\shovel.nuspec");
+*/
