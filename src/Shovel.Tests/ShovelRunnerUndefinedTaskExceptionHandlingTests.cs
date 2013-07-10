@@ -11,7 +11,7 @@ namespace Shovel.Tests
 		{
 			var undefinedTaskException = new UndefinedTaskException("UndefinedTask");
 			RunTaskUnchecked("UndefinedTask");
-			Assert.That(GetErrorOutput(), Is.EqualTo(string.Format("ERROR: {0}\r\n", undefinedTaskException.Message)));
+			Assert.That(GetErrorOutput(), Is.EqualTo(string.Format("SHOVEL_ERROR: {0}\r\n", undefinedTaskException.Message)));
 		}
 	}
 }
