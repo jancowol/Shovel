@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Shovel")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Shovel ScriptCs Script Pack")]
+[assembly: AssemblyDescription("A scriptcs script pack enabling the creation of scriptcs (.csx) build scripts.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Janco Wolmarans")]
 [assembly: AssemblyProduct("Shovel")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
