@@ -5,27 +5,30 @@ namespace ShovelPack.Utils
 {
 	public interface IProcessRunner
 	{
-		void RunProcess(string processExecutable, string[] processArguments);
+		void RunProcess(ProcessProperties processProperties);
 	}
 
 	public class ProcessRunner : IProcessRunner
 	{
-		public void RunProcess(string processExecutable, string[] processArguments)
+		public void RunProcess(ProcessProperties processProperties)
 		{
 			var process = new Process
 				{
 					StartInfo = new ProcessStartInfo
 						{
-							FileName = processExecutable,
-							Arguments = String.Join(" ", processArguments),
+							FileName = processProperties.Executable,
+							Arguments = String.Join(" ", processProperties.Arguments),
 							UseShellExecute = false,
-							RedirectStandardOutput = true
 						}
 				};
-			process.OutputDataReceived += (sender, eventArgs) => Console.WriteLine(eventArgs.Data);
 			process.Start();
-			process.BeginOutputReadLine();
 			process.WaitForExit();
 		}
+	}
+
+	public class ProcessProperties
+	{
+		public string Executable { get; set; }
+		public string[] Arguments { get; set; }
 	}
 }

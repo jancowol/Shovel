@@ -19,7 +19,13 @@ namespace ShovelPack.TaskActions.MsBuild
 
 		public void Run(MsBuildProperties msBuildProperties)
 		{
-			_processRunner.RunProcess("MSBuild.exe", BuildArguments(msBuildProperties));
+			var processProperties = new ProcessProperties()
+				{
+					Executable = "MSBuild.exe",
+					Arguments = BuildArguments(msBuildProperties)
+				};
+
+			_processRunner.RunProcess(processProperties);
 		}
 
 		private static string[] BuildArguments(MsBuildProperties msBuildProperties)

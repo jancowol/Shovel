@@ -9,11 +9,15 @@ Require<Shovel>();
 			msb.NoLogo();
 		});
 
-"Package"
-	.Do(() =>
-		{
-			Program.Run(@"NuGet pack ..\src\nuget\shovel.nuspec");
-		});
+// "Package"
+// 	.Do(() =>
+// 		{
+// 			Program.Run(p =>
+// 			{
+// 				p.Executable = @"..\src\packages\NuGet.CommandLine.2.6.1\tools\NuGet.exe";
+// 				p.Arguments("pack", @"..\src\nuget\shovel.nuspec");
+// 			});
+// 		});
 
 /*
 // Ideally, should be able to do:

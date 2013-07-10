@@ -9,6 +9,7 @@ msbuild /nologo /verbosity:quiet /target:Rebuild /property:OutDir=..\..\build\bi
 
 echo Rebuilding Shovel with itself... Pretty nifty huh?
 echo Note: ScriptCS must be available in the path for this to work.
-scriptcs build.csx -loglevel Error -- -tasks:Build,Package
+rem scriptcs build.csx -loglevel Error -- -tasks:Build,Package
+scriptcs build.csx -loglevel Error -- -tasks:Build
 
 echo Done building Shovel with itself.

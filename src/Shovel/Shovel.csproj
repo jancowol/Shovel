@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Arguments.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="ScriptExtensions\Program.cs" />
     <Compile Include="ShovelRunner.cs" />
     <Compile Include="ShovelStaticContext.cs" />
     <Compile Include="Tasks\ITask.cs" />

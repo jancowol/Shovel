@@ -1,6 +1,8 @@
 @echo off
 cd %~dp0
 
+cls
+
 echo Rebuilding Shovel...
 pushd ..\build
 call build.bat

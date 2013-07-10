@@ -12,6 +12,7 @@ namespace ShovelPack
 		public void Initialize(IScriptPackSession session)
 		{
 			session.ImportNamespace("ShovelPack");
+			session.ImportNamespace("ShovelPack.ScriptExtensions");
 			ShovelStaticContext.Initialize();
 		}
 
