@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ScriptCs.Shovel</id>
+    <version>0.1.0.0</version>
+    <title>Shovel ScriptCs Script Pack</title>
+    <authors>Janco Wolmarans</authors>
+    <owners>Janco Wolmarans</owners>
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>https://github.com/jancowol/Shovel</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A scriptcs script pack enabling the creation of scriptcs (.csx) build scripts.</description>
+    <copyright>Copyright 2013</copyright>
+    <tags>scriptcs shovel</tags>
+    <dependencies>
+      <dependency id="ScriptCs.Contracts" version="0.5.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin-built-with-shovel\Shovel.dll" target="lib\net45" />
+  </files>
+</package>
