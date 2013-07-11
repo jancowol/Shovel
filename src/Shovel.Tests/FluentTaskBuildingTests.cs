@@ -23,6 +23,13 @@ namespace Shovel.Tests
 		}
 
 		[Test]
+		public void CanDefineNewEmptyTask()
+		{
+			AssertValidTaskBuiltFromFluentExtension(
+				taskName => taskName.Do());
+		}
+
+		[Test]
 		public void CanDefineNewTaskFromMsBuild()
 		{
 			AssertValidTaskBuiltFromFluentExtension(

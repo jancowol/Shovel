@@ -25,3 +25,8 @@ echo *** Test basic task running...
 scriptcs test-shovel.csx -loglevel Error -- -tasks:Simple
 echo *** Done ***
 echo.
+
+echo *** General tests...
+scriptcs test-general.csx -loglevel Error -- -tasks:TheTask
+echo *** Done ***
+echo.

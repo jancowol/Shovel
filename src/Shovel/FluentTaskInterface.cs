@@ -1,5 +1,4 @@
 ﻿using System;
-using ShovelPack.ScriptExtensions;
 using ShovelPack.TaskActions.MsBuild;
 using ShovelPack.TaskActions.RunProgram;
 using ShovelPack.Tasks;
@@ -8,6 +7,11 @@ namespace ShovelPack
 {
 	public static class FluentTaskInterface
 	{
+		public static ITask Do(this string taskName)
+		{
+			return Do(taskName, () => { });
+		}
+
 		public static ITask Do(this string taskName, Action action)
 		{
 			return NewTask(taskName, t => t.Do(action));
