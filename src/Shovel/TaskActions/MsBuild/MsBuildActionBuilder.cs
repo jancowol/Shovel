@@ -7,8 +7,7 @@ namespace ShovelPack.TaskActions.MsBuild
 	{
 		private readonly IMsBuildRunner _msBuildRunner;
 
-		public MsBuildActionBuilder()
-			: this(new MsBuildRunner())
+		public MsBuildActionBuilder() : this(new MsBuildRunner())
 		{
 		}
 
@@ -24,8 +23,7 @@ namespace ShovelPack.TaskActions.MsBuild
 
 			configure(actionConfigurator);
 
-			return
-				() => _msBuildRunner.Run(msBuildProperties);
+			return () => _msBuildRunner.Run(msBuildProperties);
 		}
 	}
 }

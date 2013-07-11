@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using ShovelPack.TaskActionConfig;
 using ShovelPack.TaskActions.MsBuild;
+using ShovelPack.TaskActions.RunProgram;
 
 namespace ShovelPack.Tasks
 {
@@ -44,14 +45,18 @@ namespace ShovelPack.Tasks
 
 		public ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator)
 		{
-			AddNewAction(typeof (MsBuildActionBuilder), actionConfigurator);
-			return this;
+			return AddNewAction(actionConfigurator);
 		}
 
-		private void AddNewAction<TActionConfigurator>(Type actionBuilderType, Action<TActionConfigurator> actionConfigurator)
+		public ITask RunProgram(Action<RunProgramConfigurator> programConfigurator)
 		{
-			_actions.Add(
-				_taskActionFactory.BuildAction(actionBuilderType, actionConfigurator));
+			return AddNewAction(programConfigurator);
+		}
+
+		private ITask AddNewAction<TActionConfigurator>(Action<TActionConfigurator> actionConfigurator)
+		{
+			_actions.Add(_taskActionFactory.BuildAction(actionConfigurator));
+			return this;
 		}
 	}
 }

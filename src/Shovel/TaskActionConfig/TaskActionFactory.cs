@@ -1,42 +1,27 @@
 ﻿using System;
 using ShovelPack.TaskActions.MsBuild;
+using ShovelPack.TaskActions.RunProgram;
 
 namespace ShovelPack.TaskActionConfig
 {
 	public class TaskActionFactory
 	{
-		private readonly MsBuildActionBuilder _msBuildActionBuilder;
-
-		public TaskActionFactory()
-			: this(new MsBuildActionBuilder())
+		public Action BuildAction<TActionConfigurator>(Action<TActionConfigurator> actionConfigurator)
 		{
-		}
-
-		public TaskActionFactory(MsBuildActionBuilder msBuildActionBuilder)
-		{
-			_msBuildActionBuilder = msBuildActionBuilder;
-		}
-
-		public Action BuildAction<TActionConfigurator>(Type actionBuilderType, Action<TActionConfigurator> actionConfigurator)
-		{
-			IActionBuilder<TActionConfigurator> actionBuilder = null;
-
-			if (actionBuilderType == typeof(MsBuildActionBuilder))
+			if (actionConfigurator is Action<MsBuildActionConfigurator>)
 			{
-				actionBuilder = _msBuildActionBuilder as IActionBuilder<TActionConfigurator>;
+				var builder = new MsBuildActionBuilder();
+				return builder.ConfigureAction(actionConfigurator as Action<MsBuildActionConfigurator>);
 			}
 
-			Action action;
-			if (actionBuilder != null)
+			if (actionConfigurator is Action<RunProgramConfigurator>)
 			{
-				action = actionBuilder.ConfigureAction(actionConfigurator);
+				var builder = new RunProgramActionBuilder();
+				return builder.ConfigureAction(actionConfigurator as Action<RunProgramConfigurator>);
 			}
-			else
-			{
-				// TODO: Implement with proper exception
-				throw new Exception("Unknown builder!");
-			}
-			return action;
+
+			// TODO: Implement with proper exception
+			throw new Exception("Unknown builder!");
 		}
 	}
 }

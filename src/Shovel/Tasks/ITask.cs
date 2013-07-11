@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using ShovelPack.ScriptExtensions;
 using ShovelPack.TaskActions.MsBuild;
+using ShovelPack.TaskActions.RunProgram;
 
 namespace ShovelPack.Tasks
 {
@@ -12,5 +14,6 @@ namespace ShovelPack.Tasks
 		ITask DependsOn(params string[] dependencies);
 		void Run();
 		ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator);
+		ITask RunProgram(Action<RunProgramConfigurator> programConfigurator);
 	}
 }

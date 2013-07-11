@@ -10,17 +10,8 @@ Require<Shovel>();
 		});
 
 "Package"
-	.Do(() =>
+	.RunProgram(p =>
 		{
-			Program.Run(p =>
-			{
-				p.Executable = @"..\src\packages\NuGet.CommandLine.2.6.1\tools\NuGet.exe";
-				p.Arguments("pack", @"Shovel.nuspec", "-OutputDirectory nuget-package");
-			});
+			p.Executable = @"..\src\packages\NuGet.CommandLine.2.6.1\tools\NuGet.exe";
+			p.Arguments("pack", @"Shovel.nuspec", "-OutputDirectory nuget-package");
 		});
-
-/*
-// Ideally, should be able to do:
-"Package"
-	.Run(@"NuGet pack ..\src\nuget\shovel.nuspec");
-*/
