@@ -6,6 +6,7 @@ cls
 echo Rebuilding Shovel...
 pushd ..\build
 call build.bat
+if %errorlevel% neq 0 exit /b 1
 popd
 
 echo Copying latest build artifacts...
