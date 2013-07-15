@@ -9,9 +9,9 @@ Require<Shovel>();
 			msb.NoLogo();
 		});
 
-"Package"
-	.RunProgram(p =>
-		{
-			p.Executable = @"..\src\packages\NuGet.CommandLine.2.6.1\tools\NuGet.exe";
-			p.Arguments("pack", @"Shovel.nuspec", "-OutputDirectory nuget-package");
-		});
+"Package".Do()
+	.NuGet.Pack(p =>
+	{
+		p.NuSpec = "Shovel.nuspec";
+		p.OutputDirectory = "nuget-package";
+	});

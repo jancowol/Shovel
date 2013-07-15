@@ -48,6 +48,9 @@
     <Compile Include="ScriptExtensions\Program.cs" />
     <Compile Include="ShovelRunner.cs" />
     <Compile Include="ShovelStaticContext.cs" />
+    <Compile Include="TaskActions\NuGet\INuGetCommands.cs" />
+    <Compile Include="TaskActions\NuGet\NuGetCommands.cs" />
+    <Compile Include="TaskActions\NuGet\NuGetPackCmdConfigurator.cs" />
     <Compile Include="TaskActions\RunProgram\RunProgramActionBuilder.cs" />
     <Compile Include="TaskActions\RunProgram\RunProgramConfigurator.cs" />
     <Compile Include="Tasks\ITask.cs" />
@@ -71,6 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)..\..\tools\NuGet\NuGet.exe $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

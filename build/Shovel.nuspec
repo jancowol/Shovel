@@ -18,5 +18,6 @@
   </metadata>
   <files>
     <file src="bin-built-with-shovel\Shovel.dll" target="lib\net45" />
+    <file src="bin-built-with-shovel\NuGet.exe" target="lib\net45"/>
   </files>
 </package>
