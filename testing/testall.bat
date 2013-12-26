@@ -9,6 +9,8 @@ call build.bat
 if %errorlevel% neq 0 exit /b 1
 popd
 
+call run-unit-tests.bat
+
 echo Copying latest build artifacts...
 if exist bin\. rmdir /S /Q .\bin
 mkdir bin
