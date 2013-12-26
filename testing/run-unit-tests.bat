@@ -2,4 +2,4 @@
 
 echo Running unit tests...
 echo.
-nunit-console.exe ..\build\bin-built-with-shovel\Shovel.Tests.dll
+nunit-console.exe /stoponerror ..\build\bin-built-with-shovel\Shovel.Tests.dll
