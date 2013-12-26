@@ -4,7 +4,7 @@ using NUnit.Framework;
 using ShovelPack.TaskActions.MsBuild;
 using ShovelPack.Utils;
 
-namespace Shovel.Tests
+namespace ShovelPack.Tests
 {
 	[TestFixture]
 	public class MsBuildRunnerTests

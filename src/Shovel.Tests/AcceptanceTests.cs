@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using ShovelPack;
 
-namespace Shovel.Tests
+namespace ShovelPack.Tests
 {
 	[TestFixture]
 	public class AcceptanceTests : ShovelAcceptanceTestsBase

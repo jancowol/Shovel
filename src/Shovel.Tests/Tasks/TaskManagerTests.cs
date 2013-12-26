@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using ShovelPack.Tasks;
 
-namespace Shovel.Tests.Tasks
+namespace ShovelPack.Tests.Tasks
 {
 	[TestFixture]
 	public class TaskManagerTests

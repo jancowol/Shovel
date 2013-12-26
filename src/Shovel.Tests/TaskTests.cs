@@ -2,7 +2,7 @@
 using ShovelPack.TaskActionConfig;
 using ShovelPack.Tasks;
 
-namespace Shovel.Tests
+namespace ShovelPack.Tests
 {
 	[TestFixture]
 	public class TaskTests

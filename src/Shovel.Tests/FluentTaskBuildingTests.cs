@@ -1,9 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
-using ShovelPack;
 using ShovelPack.Tasks;
 
-namespace Shovel.Tests
+namespace ShovelPack.Tests
 {
 	[TestFixture]
 	public class FluentTaskBuildingTests : ShovelAcceptanceTestsBase

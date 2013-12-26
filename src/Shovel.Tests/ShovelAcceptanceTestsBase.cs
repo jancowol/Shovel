@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
 using NUnit.Framework;
-using ShovelPack;
 using ShovelPack.Tasks;
 
-namespace Shovel.Tests
+namespace ShovelPack.Tests
 {
 	public abstract class ShovelAcceptanceTestsBase
 	{
