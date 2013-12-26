@@ -13,7 +13,7 @@
     <copyright>Copyright 2013 Janco Wolmarans</copyright>
     <tags>scriptcs shovel</tags>
     <dependencies>
-      <dependency id="ScriptCs.Contracts" version="0.5.1" />
+      <dependency id="ScriptCs.Contracts" version="0.8.1" />
       <dependency id="Microsoft.Web.Xdt" version="1.0.0" />
     </dependencies>
   </metadata>
