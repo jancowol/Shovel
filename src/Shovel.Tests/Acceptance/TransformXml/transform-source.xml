@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <child-element>
+    <element-to-transform>This value should be replaced by something else</element-to-transform>
+  </child-element>
+  <untouched>
+    This section should remain untouched after transformation.
+  </untouched>
+</root>

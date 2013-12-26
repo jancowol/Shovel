@@ -4,6 +4,7 @@ using ShovelPack.TaskActionConfig;
 using ShovelPack.TaskActions.MsBuild;
 using ShovelPack.TaskActions.NuGet;
 using ShovelPack.TaskActions.RunProgram;
+using ShovelPack.TaskActions.XMLTransformer;
 
 namespace ShovelPack.Tasks
 {
@@ -44,14 +45,19 @@ namespace ShovelPack.Tasks
 			return this;
 		}
 
-		public ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator)
+		public ITask MsBuild(Action<MsBuildActionConfigurator> configurator)
 		{
-			return AddNewAction(actionConfigurator);
+			return AddNewAction(configurator);
 		}
 
-		public ITask RunProgram(Action<RunProgramConfigurator> programConfigurator)
+		public ITask RunProgram(Action<RunProgramConfigurator> configurator)
 		{
-			return AddNewAction(programConfigurator);
+			return AddNewAction(configurator);
+		}
+
+		public ITask TransformXml(Action<XmlTransformConfigurator> configurator)
+		{
+			return AddNewAction(configurator);
 		}
 
 		public INuGetCommands NuGet

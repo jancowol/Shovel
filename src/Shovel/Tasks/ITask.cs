@@ -4,6 +4,7 @@ using ShovelPack.ScriptExtensions;
 using ShovelPack.TaskActions.MsBuild;
 using ShovelPack.TaskActions.NuGet;
 using ShovelPack.TaskActions.RunProgram;
+using ShovelPack.TaskActions.XMLTransformer;
 
 namespace ShovelPack.Tasks
 {
@@ -15,7 +16,8 @@ namespace ShovelPack.Tasks
 		ITask Do(Action action);
 		ITask DependsOn(params string[] dependencies);
 		void Run();
-		ITask MsBuild(Action<MsBuildActionConfigurator> actionConfigurator);
-		ITask RunProgram(Action<RunProgramConfigurator> programConfigurator);
+		ITask MsBuild(Action<MsBuildActionConfigurator> configurator);
+		ITask RunProgram(Action<RunProgramConfigurator> configurator);
+		ITask TransformXml(Action<XmlTransformConfigurator> configurator);
 	}
 }

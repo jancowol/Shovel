@@ -1,6 +1,7 @@
 ﻿using System;
 using ShovelPack.TaskActions.MsBuild;
 using ShovelPack.TaskActions.RunProgram;
+using ShovelPack.TaskActions.XMLTransformer;
 using ShovelPack.Tasks;
 
 namespace ShovelPack
@@ -22,14 +23,19 @@ namespace ShovelPack
 			return NewTask(taskName, t => t.DependsOn(dependencies));
 		}
 
-		public static ITask MsBuild(this string taskName, Action<MsBuildActionConfigurator> actionConfigurator)
+		public static ITask MsBuild(this string taskName, Action<MsBuildActionConfigurator> configurator)
 		{
-			return NewTask(taskName, t => t.MsBuild(actionConfigurator));
+			return NewTask(taskName, t => t.MsBuild(configurator));
 		}
 
-		public static ITask RunProgram(this string taskName, Action<RunProgramConfigurator> programConfigurator)
+		public static ITask RunProgram(this string taskName, Action<RunProgramConfigurator> configurator)
 		{
-			return NewTask(taskName, t => t.RunProgram(programConfigurator));
+			return NewTask(taskName, t => t.RunProgram(configurator));
+		}
+
+		public static ITask TransformXml(this string taskName, Action<XmlTransformConfigurator> configurator)
+		{
+			return NewTask(taskName, t => t.TransformXml(configurator));
 		}
 
 		public static void Run(this string taskName)

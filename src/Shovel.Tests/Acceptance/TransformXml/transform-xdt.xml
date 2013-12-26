@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <child-element>
+    <element-to-transform xdt:Transform="Replace">the-replaced-element-after-transformation</element-to-transform>
+  </child-element>
+</root>

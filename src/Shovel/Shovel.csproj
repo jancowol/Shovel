@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Web.XmlTransform">
+      <HintPath>..\packages\Microsoft.Web.Xdt.1.0.0\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
     <Reference Include="ScriptCs.Contracts">
       <HintPath>..\packages\ScriptCs.Contracts.0.5.1\lib\net45\ScriptCs.Contracts.dll</HintPath>
     </Reference>
@@ -53,6 +56,9 @@
     <Compile Include="TaskActions\NuGet\NuGetPackCmdConfigurator.cs" />
     <Compile Include="TaskActions\RunProgram\RunProgramActionBuilder.cs" />
     <Compile Include="TaskActions\RunProgram\RunProgramConfigurator.cs" />
+    <Compile Include="TaskActions\XMLTransformer\XmlTransformActionBuilder.cs" />
+    <Compile Include="TaskActions\XMLTransformer\XmlTransformConfigurator.cs" />
+    <Compile Include="TaskActions\XMLTransformer\XmlTransformer.cs" />
     <Compile Include="Tasks\ITask.cs" />
     <Compile Include="Tasks\ITaskManager.cs" />
     <Compile Include="Tasks\Task.cs" />

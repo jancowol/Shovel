@@ -1,6 +1,7 @@
 ﻿using System;
 using ShovelPack.TaskActions.MsBuild;
 using ShovelPack.TaskActions.RunProgram;
+using ShovelPack.TaskActions.XMLTransformer;
 
 namespace ShovelPack.TaskActionConfig
 {
@@ -18,6 +19,12 @@ namespace ShovelPack.TaskActionConfig
 			{
 				var builder = new RunProgramActionBuilder();
 				return builder.ConfigureAction(actionConfigurator as Action<RunProgramConfigurator>);
+			}
+
+			if (actionConfigurator is Action<XmlTransformConfigurator>)
+			{
+				var builder = new XmlTransformActionBuilder();
+				return builder.ConfigureAction(actionConfigurator as Action<XmlTransformConfigurator>);
 			}
 
 			// TODO: Implement with proper exception
