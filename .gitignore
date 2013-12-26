@@ -19,6 +19,9 @@ build/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+# NUnit test results
+[Tt]est[Rr]esult.[Xx][Mm][Ll]
+
 *_i.c
 *_p.c
 *.ilk
