@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/jancowol/Shovel</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A scriptcs script pack enabling the creation of scriptcs (.csx) build scripts.</description>
-    <copyright>Copyright 2013</copyright>
+    <copyright>Copyright 2013 Janco Wolmarans</copyright>
     <tags>scriptcs shovel</tags>
     <dependencies>
       <dependency id="ScriptCs.Contracts" version="0.5.1" />
