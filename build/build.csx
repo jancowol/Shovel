@@ -1,5 +1,8 @@
 Require<Shovel>();
 
+"Full"
+	.DependsOn("Build", "Package");
+	
 "Build"
 	.MsBuild(msb =>
 		{
