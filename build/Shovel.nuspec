@@ -6,7 +6,7 @@
     <title>Shovel ScriptCs Script Pack</title>
     <authors>Janco Wolmarans</authors>
     <owners>Janco Wolmarans</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <licenseUrl>https://github.com/jancowol/Shovel/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/jancowol/Shovel</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A scriptcs script pack enabling the creation of scriptcs (.csx) build scripts.</description>
