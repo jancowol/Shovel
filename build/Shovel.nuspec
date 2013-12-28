@@ -15,10 +15,10 @@
     <dependencies>
       <dependency id="ScriptCs.Contracts" version="0.8.1" />
       <dependency id="Microsoft.Web.Xdt" version="1.0.0" />
+      <dependency id="Nuget.Core" version="2.7.2" />
     </dependencies>
   </metadata>
   <files>
     <file src="bin-built-with-shovel\Shovel.dll" target="lib\net45" />
-    <file src="bin-built-with-shovel\NuGet.exe" target="lib\net45"/>
   </files>
 </package>
