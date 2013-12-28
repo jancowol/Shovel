@@ -6,8 +6,8 @@
     <title>A Test Package</title>
     <authors>Janco Wolmarans</authors>
     <owners>Janco Wolmarans</owners>
-    <licenseUrl></licenseUrl>
-    <projectUrl></projectUrl>
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The description for the test package</description>
     <copyright>Copyright 2013 Janco Wolmarans</copyright>

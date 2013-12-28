@@ -62,6 +62,7 @@
     <Compile Include="ShovelRunnerTests.cs" />
     <Compile Include="ShovelAcceptanceTestsBase.cs" />
     <Compile Include="ShovelRunnerUndefinedTaskExceptionHandlingTests.cs" />
+    <Compile Include="TaskActions\NuGet\NuGetPackageBuilderTests.cs" />
     <Compile Include="Tasks\TaskManagerTests.cs" />
     <Compile Include="TaskTests.cs" />
   </ItemGroup>
@@ -80,6 +81,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Acceptance\NuGet\the-package-contents.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Acceptance\TransformXml\transform-source.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -87,9 +91,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TaskActions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
