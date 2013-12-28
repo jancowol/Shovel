@@ -25,11 +25,17 @@ namespace ShovelPack.TaskActions.NuGet
 		private Action BuildNugetPackAction(Action<NuGetPackCmdConfigurator> packConfigurator)
 		{
 			return () =>
-			{
-				var configurator = new NuGetPackCmdConfigurator();
-				packConfigurator(configurator);
-				_nuGetPackageBuilder.BuildNuGetPackage((INuGetPackConfiguration) configurator);
-			};
+				{
+					var packSpecification = BuildPackSpecification(packConfigurator);
+					_nuGetPackageBuilder.BuildNuGetPackage(packSpecification);
+				};
+		}
+
+		private static NuGetPackSpecification BuildPackSpecification(Action<NuGetPackCmdConfigurator> packConfigurator)
+		{
+			var configurator = new NuGetPackCmdConfigurator();
+			packConfigurator(configurator);
+			return configurator.BuildSpecification();
 		}
 	}
 }

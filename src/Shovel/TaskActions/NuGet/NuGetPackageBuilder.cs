@@ -5,7 +5,7 @@ namespace ShovelPack.TaskActions.NuGet
 {
 	public class NuGetPackageBuilder
 	{
-		public void BuildNuGetPackage(INuGetPackConfiguration packConfiguration)
+		public void BuildNuGetPackage(NuGetPackSpecification packConfiguration)
 		{
 			var packageBuilder = new PackageBuilder(packConfiguration.NuSpec, NullPropertyProvider.Instance, true);
 			var packagePath = Path.Combine(packConfiguration.OutputDirectory, GetDefaultPackagePath(packageBuilder));

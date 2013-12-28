@@ -12,25 +12,24 @@ namespace ShovelPack.Tests.TaskActions.NuGet
 		[Test]
 		public void CanBuildNuGetPackage()
 		{
-			DeleteAllNuGetPackages();
+			DeleteAllNuGetPackageFiles();
 
 			var builder = new NuGetPackageBuilder();
-			builder.BuildNuGetPackage(new NuGetPackCmdConfigurator() { NuSpec = @"Acceptance\NuGet\test-nuget-pack.nuspec", OutputDirectory = "." });
+			builder.BuildNuGetPackage(new NuGetPackSpecification(@"Acceptance\NuGet\test-nuget-pack.nuspec", "."));
 
 			Assert.IsTrue(GetPackageFileList().Any(), "No NuGet package files found");
 		}
 
-		private static void DeleteAllNuGetPackages()
+		private static void DeleteAllNuGetPackageFiles()
 		{
 			GetPackageFileList()
+				.ToList()
 				.ForEach(File.Delete);
 		}
 
-		private static List<string> GetPackageFileList()
+		private static IEnumerable<string> GetPackageFileList()
 		{
-			return
-				Directory.EnumerateFiles(".", "*.nupkg")
-				.ToList();
+			return Directory.EnumerateFiles(".", "*.nupkg");
 		}
 	}
 }
