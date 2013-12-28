@@ -14,7 +14,7 @@ namespace ShovelPack.Tests.TaskActions.NuGet
 		{
 			DeleteAllNuGetPackages();
 
-			var builder = new NuGetPackageBuilder(@"..\..\..\..\tools\NuGet\NuGet.exe");
+			var builder = new NuGetPackageBuilder();
 			builder.BuildNuGetPackage(new NuGetPackCmdConfigurator() { NuSpec = @"Acceptance\NuGet\test-nuget-pack.nuspec", OutputDirectory = "." });
 
 			Assert.IsTrue(GetPackageFileList().Any(), "No NuGet package files found");

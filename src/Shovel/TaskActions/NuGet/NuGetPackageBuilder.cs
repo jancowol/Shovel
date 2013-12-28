@@ -1,25 +1,22 @@
-using ShovelPack.Utils;
+using System.IO;
+using NuGet;
 
 namespace ShovelPack.TaskActions.NuGet
 {
 	public class NuGetPackageBuilder
 	{
-		private readonly string _nugetExePath;
-
-		public NuGetPackageBuilder(string nugetExePath = null)
-		{
-			_nugetExePath = nugetExePath ?? "bin\\Nuget.exe";
-		}
-
 		public void BuildNuGetPackage(INuGetPackConfiguration packConfiguration)
 		{
-			var processRunner = new ProcessRunner();
-			processRunner.RunProcess(
-				new ProcessProperties()
-				{
-					Arguments = new[] { "pack", packConfiguration.NuSpec, "-OutputDirectory", packConfiguration.OutputDirectory },
-					Executable = _nugetExePath
-				});
+			var packageBuilder = new PackageBuilder(packConfiguration.NuSpec, NullPropertyProvider.Instance, true);
+			var packagePath = Path.Combine(packConfiguration.OutputDirectory, GetDefaultPackagePath(packageBuilder));
+			var packageStream = File.Create(packagePath);
+			packageBuilder.Save(packageStream);
+		}
+
+		private static string GetDefaultPackagePath(PackageBuilder builder)
+		{
+			var version = builder.Version.ToString();
+			return builder.Id + "." + version + Constants.PackageExtension;
 		}
 	}
 }
