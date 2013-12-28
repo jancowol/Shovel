@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acceptance\NuGet\NuGetPackAcceptanceTests.cs" />
     <Compile Include="Acceptance\TransformXml\TransformXmlAcceptanceTests.cs" />
     <Compile Include="ArgumentsTests.cs" />
     <Compile Include="FluentTaskBuildingTests.cs" />
@@ -71,6 +72,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Acceptance\NuGet\test-nuget-pack.nuspec">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

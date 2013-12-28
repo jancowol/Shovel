@@ -54,6 +54,7 @@
     <Compile Include="ShovelStaticContext.cs" />
     <Compile Include="TaskActions\NuGet\INuGetCommands.cs" />
     <Compile Include="TaskActions\NuGet\NuGetCommands.cs" />
+    <Compile Include="TaskActions\NuGet\NuGetPackageBuilder.cs" />
     <Compile Include="TaskActions\NuGet\NuGetPackCmdConfigurator.cs" />
     <Compile Include="TaskActions\RunProgram\RunProgramActionBuilder.cs" />
     <Compile Include="TaskActions\RunProgram\RunProgramConfigurator.cs" />

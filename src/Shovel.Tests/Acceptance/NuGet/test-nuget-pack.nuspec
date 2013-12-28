@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Just.Something</id>
+    <version>0.0.0.7</version>
+    <title>A Test Package</title>
+    <authors>Janco Wolmarans</authors>
+    <owners>Janco Wolmarans</owners>
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The description for the test package</description>
+    <copyright>Copyright 2013 Janco Wolmarans</copyright>
+    <tags>up down truth beauty</tags>
+  </metadata>
+  <files>
+    <file src="the-package-contents.txt" target="some-folder" />
+  </files>
+</package>
