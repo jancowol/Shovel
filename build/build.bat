@@ -27,7 +27,7 @@ exit /b 1
 
 :testPackage
 echo Checking existence of nuget package...
-if exist nuget-package\ScriptCs.Shovel.0.1.0.0.nupkg goto :success
+if exist nuget-package\ScriptCs.Shovel.*.nupkg goto :success
 echo ERROR: Could not find the Shovel NuGet package, build failed.
 exit /b 1
 
