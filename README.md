@@ -33,16 +33,31 @@ Require<Shovel>();
     File.Copy(@"c:\my-project\bin\debug\my-project.exe", @"c:\deployment\my-project.exe");
   });
 ```
+
 When executing the script, the task(s) to run may be specified as follows:
-```Batchfile
-scriptcs mybuildscript.csx -- -tasks:DeployNewVersion
-```
+
+    scriptcs mybuildscript.csx -- -tasks:DeployNewVersion
+
 A task may declare multiple dependencies eg:
+
 ```C#
 "DeployNewVersion"
   .DependsOn("Build", "Test")
 ```
+
 Multiple tasks to run may be specified on the command line eg:
-```Batchfile
-scriptcs build.csx -- -tasks:Clean,Build,Deploy
+    scriptcs build.csx -- -tasks:Clean,Build,Deploy
+
+Installation
+------------
+First [install scriptcs](https://github.com/scriptcs/scriptcs#getting-scriptcs). Then change to the directory where you want to create your script (or have an existing one), and use scriptcs to install Shovel to the packages directory:
+
+    scriptcs -install scriptcs.shovel
+
+Now all you have to do is import Shovel in your script using the `Require` statement:
+
+```C#
+Require<Shovel>();
 ```
+
+That's it - go build something!
