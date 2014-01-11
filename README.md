@@ -49,6 +49,12 @@ Multiple tasks to run may be specified on the command line eg:
 
     scriptcs build.csx -- -tasks:Clean,Build,Deploy
 
+Important Powershell Information
+--------------------------------
+Scriptcs uses a double dash `--` to separate arguments to scripts from arguments to scriptcs. However, the double-dash has [special meaning in Powershell](http://stackoverflow.com/a/12198146). When running scriptcs with Shovel from Powershell, you need to escape the double-dash with a backtick (`). So the example above should be run as follows from Powershell:
+
+    scriptcs build.csx `-- -tasks:Clean,Build,Deploy
+
 Installation
 ------------
 First [install scriptcs](https://github.com/scriptcs/scriptcs#getting-scriptcs). Then change to the directory where you want to create your script (or have an existing one), and use scriptcs to install Shovel to the packages directory:
