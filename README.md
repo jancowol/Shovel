@@ -46,6 +46,7 @@ A task may declare multiple dependencies eg:
 ```
 
 Multiple tasks to run may be specified on the command line eg:
+
     scriptcs build.csx -- -tasks:Clean,Build,Deploy
 
 Installation
