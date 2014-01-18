@@ -60,9 +60,9 @@ namespace ShovelPack.Tasks
 			return AddNewAction(configurator);
 		}
 
-		public INuGetCommands NuGet
+		public INuGetCommands NuGet()
 		{
-			get { return new NuGetCommands(this); }
+			return new NuGetCommands(this);
 		}
 
 		private ITask AddNewAction<TActionConfigurator>(Action<TActionConfigurator> actionConfigurator)

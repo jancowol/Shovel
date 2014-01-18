@@ -13,7 +13,7 @@ Require<Shovel>();
 		});
 
 "Package".Do()
-	.NuGet.Pack(p =>
+	.NuGet().Pack(p =>
 	{
 		p.NuSpec = "Shovel.nuspec";
 		p.OutputDirectory = "nuget-package";

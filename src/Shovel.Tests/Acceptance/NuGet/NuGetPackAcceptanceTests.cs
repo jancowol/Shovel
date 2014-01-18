@@ -15,7 +15,7 @@ namespace ShovelPack.Tests.Acceptance.NuGet
 
 			"Pack"
 				.Do()
-				.NuGet.Pack(n =>
+				.NuGet().Pack(n =>
 					{
 						n.NuSpec = @"Acceptance\NuGet\test-nuget-pack.nuspec";
 						n.OutputDirectory = @".";

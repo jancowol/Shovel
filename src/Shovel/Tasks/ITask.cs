@@ -12,7 +12,7 @@ namespace ShovelPack.Tasks
 	{
 		IEnumerable<string> Dependencies { get; }
 		string Name { get; }
-		INuGetCommands NuGet { get; }
+		INuGetCommands NuGet();
 		ITask Do(Action action);
 		ITask DependsOn(params string[] dependencies);
 		void Run();
